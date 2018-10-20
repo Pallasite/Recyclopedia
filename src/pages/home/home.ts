@@ -15,10 +15,10 @@ export class HomePage {
 
   }
   public openForm() {
-    // push contact component on
+    // push contact component on stack
     console.log("forms page");
     this.navCtrl.push(FormsPage);
-    // this.navCtrl.push(FormsPage, obj->userAuth=true);
+  // this.navCtrl.push(FormsPage, obj->adminAuthAuth=true);
   }
 
 }
