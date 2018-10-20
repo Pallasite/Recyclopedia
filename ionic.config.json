@@ -1,0 +1,8 @@
+{
+  "name": "recyclopedia",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "pro_id": "b0fe664a"
+}
