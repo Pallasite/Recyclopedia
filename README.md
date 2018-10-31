@@ -1,4 +1,5 @@
 # Recyclopedia
+## Saving the World™
 *a Software Engineering CS506 - Group Project*
 
 ## Description
