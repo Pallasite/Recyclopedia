@@ -12,6 +12,7 @@ import { Favorites } from '../pages/favorites/favorites';
 import { FormsPage } from '../pages/contact/contact';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
+    GoogleMaps,
+
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

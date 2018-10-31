@@ -5,6 +5,9 @@
 // roboto, and noto sans fonts
 $font-path: "../assets/fonts";
 
+// google font request possible here for dynamic font changing?
+// ( to easily test fonts and not have to download them to try them? not sure if possible)
+
 
 // The app direction is used to include
 // rtl styles in your app. For more info, please see:
@@ -84,5 +87,25 @@ $colors: (
 // Fonts
 // --------------------------------------------------
 
-@import "roboto";
-@import "noto-sans";
+ @import "roboto";
+ @import "noto-sans";
+ 
+
+
+
+// probably delete below 
+
+
+// @font-face {
+// font-family: Source Sans Pro;
+// src: url(“../assets/fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf”);
+// }
+
+// // ios
+// $font-family-ios-base: ‘Source Sans Pro’;
+
+// // android
+// $font-family-md-base: ‘Source Sans Pro’;
+
+// // windows 
+// $font-family-wp-base: ‘Source Sans Pro’;

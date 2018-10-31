@@ -1,3 +1,8 @@
-page-locations {
-
+ion-app._gmaps_cdv_ .nav-decor {
+  background-color: transparent !important;
 }
+    /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
