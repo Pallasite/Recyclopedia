@@ -1,0 +1,12 @@
+antiorm==1.2.1
+beautifulsoup4==4.6.3
+bs4==0.0.1
+certifi==2018.8.24
+chardet==3.0.4
+Django==2.1.1
+idna==2.7
+MarkupSafe==1.0
+pytz==2018.7
+requests==2.19.1
+urllib3==1.23
+utils==0.9.0
