@@ -73,19 +73,19 @@ export class LocationsPage implements OnInit {
     private _googleMaps: GoogleMaps
  ) {
 
-   function ngOnInit() {
-    console.log("on init");
-    this.initMap();
-  }
+  //  function ngOnInit() {
+  //   console.log("on init");
+  //   this.initMap();
+  // }
 
-      var map;
-      function initMap() {
-        console.log("It's running...");
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
-        });
-      }
+      // var map;
+      // function initMap() {
+      //   console.log("It's running...");
+      //   map = new google.maps.Map(document.getElementById('map'), {
+      //     center: {lat: -34.397, lng: 150.644},
+      //     zoom: 8
+      //   });
+      // }
 // ngAfterViewInit() {
 //   const options: any = { ... } // put your config here
 //   const map: GoogleMap = this.googleMaps.create('map', options);
