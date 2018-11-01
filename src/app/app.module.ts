@@ -13,6 +13,9 @@ import { FormsPage } from '../pages/contact/contact';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
+import { HttpClientModule } from '@angular/common/http';
+import { RestProvider } from '../providers/rest/rest';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +30,8 @@ import { GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
     entryComponents: [
@@ -45,7 +49,8 @@ import { GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
     SplashScreen,
     GoogleMaps,
 
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    RestProvider
   ]
 })
 export class AppModule {}
