@@ -7,6 +7,19 @@
 </ion-header>
 
 <ion-content>
+<ion-list inset>
+<ion-item *ngFor=“let user of users”>
+  <h1>{{item.item}}</h1>
+  <h2>{{item.methods}}</h2>
+  <h3>{{item.locations}</h3>
+ 
+</ion-item>
+</ion-list>
+</ion-content>
+
+
+
+<!--<ion-content>
   <ion-list>
     <!--<ion-list-header>Search</ion-list-header>-->
     <ion-searchbar 
@@ -21,4 +34,4 @@
       
     </ion-item>
   </ion-list>
-</ion-content>
+</ion-content>-->
