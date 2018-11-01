@@ -18,7 +18,7 @@ export class SearchPage {
     this.restProvider.getItems()
       .then(data => {
         this.items = data;
-        console.log("Items: " + this.items);
+
       });
   }
 
