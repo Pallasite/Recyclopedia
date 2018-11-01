@@ -9,12 +9,13 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class RestProvider {
-  apiUrl = 'http://localhost:1337/127.0.0.1:8000';
+  apiUrl = 'http://128.104.153.42:8000';
   constructor(public http: HttpClient) {
     console.log('Hello RestProvider Provider');
     this.getItems();
   }
   getItems() {
+    console.log("getItems");
     return new Promise(resolve => {
       this.http.get(this.apiUrl + '/recycle_db/1/').subscribe(data => {
         resolve(data); 
@@ -22,7 +23,7 @@ export class RestProvider {
         // console.log("items: " , data.item);
       },
         err => {
-          console.log("error: " + err);
+          console.log("REST error: " , err);
           
       });
     });

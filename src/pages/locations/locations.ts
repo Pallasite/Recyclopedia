@@ -3,8 +3,6 @@ import { NavController, Platform } from 'ionic-angular';
 import { GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
 
-declare var google;
-
 declare var google: any;
 
 @Component({
@@ -64,14 +62,14 @@ export class LocationsPage {
           console.log(err);
       });
      }
-export class LocationsPage implements OnInit {
-   map: GoogleMap;
+// export class LocationsPage implements OnInit {
+//    map: GoogleMap;
  
-  constructor(
-    public navCtrl: NavController, 
-    public platform: Platform,
-    private _googleMaps: GoogleMaps
- ) {
+//   constructor(
+//     public navCtrl: NavController, 
+//     public platform: Platform,
+//     private _googleMaps: GoogleMaps
+//  ) {
 
   //  function ngOnInit() {
   //   console.log("on init");
@@ -98,4 +96,4 @@ export class LocationsPage implements OnInit {
 
   }
 
-}
+
