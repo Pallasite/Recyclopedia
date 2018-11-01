@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { BarcodeScan } from '../pages/scan/scan';
 import { Favorites } from '../pages/favorites/favorites';
+import { Geolocation } from '@ionic-native/geolocation';
 import { FormsPage } from '../pages/contact/contact';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -43,7 +44,7 @@ import { GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
   providers: [
     StatusBar,
     SplashScreen,
-    GoogleMaps,
+    Geolocation,
 
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
