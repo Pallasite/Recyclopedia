@@ -8,7 +8,7 @@ declare var google;
 @Component({
   selector: 'page-locations',
   templateUrl: 'locations.html',
-  providers: [GoogleMaps]
+  //providers: [GoogleMaps]
 })
 
 export class LocationsPage {
@@ -48,7 +48,7 @@ export class LocationsPage {
       
       this.geolocation.getCurrentPosition().then((position) => {
     
-       let latLng = new google.maps.LatLng(-34.9290, 138.6010);
+       let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
     
        let mapOptions = {
          center: latLng,
