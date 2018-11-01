@@ -12,12 +12,15 @@ export class SearchPage {
   constructor(public navCtrl: NavController, public restProvider: RestProvider) {
     // search connection here with database
       this.getItems();
+      
   }
 
   getItems() {
+    console.log("getting items");
     this.restProvider.getItems()
       .then(data => {
         this.items = data;
+        console.log("this.items " , this.items);
 
       });
   }

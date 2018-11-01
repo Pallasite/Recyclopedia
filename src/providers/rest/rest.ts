@@ -19,7 +19,7 @@ export class RestProvider {
       this.http.get(this.apiUrl + '/recycle_db/1/').subscribe(data => {
         resolve(data); 
         console.log("data: " , data);
-        console.log("items: " , data.item);
+        // console.log("items: " , data.item);
       },
         err => {
           console.log("error: " + err);
