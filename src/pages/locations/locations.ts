@@ -50,13 +50,13 @@ export class LocationsPage {
 //     public platform: Platform,
 //     private _googleMaps: GoogleMaps
 //  ) {
-   map: GoogleMap;
+  //  map: GoogleMap;
  
-  constructor(
-    public navCtrl: NavController, 
-    public platform: Platform,
-    private _googleMaps: GoogleMaps
- ) {
+//   constructor(
+//     public navCtrl: NavController, 
+//     public platform: Platform,
+//     private _googleMaps: GoogleMaps
+//  ) {
 
   //  function ngOnInit() {
   //   console.log("on init");

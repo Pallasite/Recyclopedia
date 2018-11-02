@@ -15,9 +15,8 @@ export class RestProvider {
     this.getItems();
   }
   getItems() {
-    console.log("getItems");
     return new Promise(resolve => {
-      this.http.get(this.apiUrl + '/recycle_db/Bicycle/').subscribe(data => {
+      this.http.get(this.apiUrl + '/recycle_db/1/').subscribe(data => {
         resolve(data); 
         console.log("data: " , data);
         // console.log("items: " , data.item);

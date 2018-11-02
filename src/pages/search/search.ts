@@ -23,7 +23,7 @@ export class SearchPage {
   // }
 
   getItems() {
-    // console.log("getting items");
+    console.log("getting items");
     this.restProvider.getItems().then(data => {
         this.items = data;
         console.log("this.items " , this.items);
