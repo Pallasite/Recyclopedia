@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 import { Component, NgModule, ViewChild, ElementRef } from '@angular/core';
+=======
+import { Component, NgModule, OnInit } from '@angular/core';
+>>>>>>> 3b4e837a36b427c08d174285d9c24205df037a42
 import { NavController, Platform } from 'ionic-angular';
 import { GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
+
+declare var google: any;
 
 declare var google: any;
 
@@ -70,6 +76,13 @@ export class LocationsPage {
 //     public platform: Platform,
 //     private _googleMaps: GoogleMaps
 //  ) {
+   map: GoogleMap;
+ 
+  constructor(
+    public navCtrl: NavController, 
+    public platform: Platform,
+    private _googleMaps: GoogleMaps
+ ) {
 
   //  function ngOnInit() {
   //   console.log("on init");

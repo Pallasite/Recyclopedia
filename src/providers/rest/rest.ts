@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class RestProvider {
-  apiUrl = 'http://128.104.153.42:8000';
+  apiUrl = 'http://localhost:1337/127.0.0.1:8000';
   constructor(public http: HttpClient) {
     console.log('Hello RestProvider Provider');
     this.getItems();
@@ -24,6 +24,11 @@ export class RestProvider {
       },
         err => {
           console.log("REST error: " , err);
+        console.log("items: " , data.item);
+      },
+        err => {
+          console.log("error: " + err);
+>>>>>>> 3b4e837a36b427c08d174285d9c24205df037a42
           
       });
     });
