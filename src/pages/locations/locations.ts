@@ -34,6 +34,7 @@ export class LocationsPage {
       }
       */
      @ViewChild('map') mapElement: ElementRef;
+     @ViewChild('directionsPanel') directionsPanel: ElementRef;
      map: any;
     
      constructor(public navCtrl: NavController, public geolocation: Geolocation) {
@@ -42,6 +43,7 @@ export class LocationsPage {
     
      ionViewDidLoad(){
        this.loadMap();
+       this.startNavigating();
      }
     
      loadMap(){
@@ -62,4 +64,54 @@ export class LocationsPage {
           console.log(err);
       });
      }
+
+     addInfoWindow(marker, content){
+ 
+      let infoWindow = new google.maps.InfoWindow({
+        content: content
+      });
+     
+      google.maps.event.addListener(marker, 'click', () => {
+        infoWindow.open(this.map, marker);
+      });
+     
+    }
+
+     addMarker(){
+ 
+      let marker = new google.maps.Marker({
+        map: this.map,
+        animation: google.maps.Animation.DROP,
+        position: this.map.getCenter()
+      });
+     
+      let content = "<h4>Information!</h4>";         
+     
+      this.addInfoWindow(marker, content);
+     
+    }
+
+    startNavigating(){
+ 
+      let directionsService = new google.maps.DirectionsService;
+      let directionsDisplay = new google.maps.DirectionsRenderer;
+
+      directionsDisplay.setMap(this.map);
+      directionsDisplay.setPanel(this.directionsPanel.nativeElement);
+
+      directionsService.route({
+          origin: 'adelaide',
+          destination: 'adelaide oval',
+          travelMode: google.maps.TravelMode['DRIVING']
+      }, (res, status) => {
+
+          if(status == google.maps.DirectionsStatus.OK){
+              directionsDisplay.setDirections(res);
+          } else {
+              console.warn(status);
+          }
+
+      });
+
+  }
 }
