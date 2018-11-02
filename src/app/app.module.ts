@@ -9,10 +9,13 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { BarcodeScan } from '../pages/scan/scan';
 import { Favorites } from '../pages/favorites/favorites';
+import { Geolocation } from '@ionic-native/geolocation';
 import { FormsPage } from '../pages/contact/contact';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
+
+// Django/Rest Imports
 import { HttpClientModule } from '@angular/common/http';
 import { RestProvider } from '../providers/rest/rest';
 
@@ -30,8 +33,9 @@ import { RestProvider } from '../providers/rest/rest';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    IonicModule.forRoot(MyApp)
+    
   ],
   bootstrap: [IonicApp],
     entryComponents: [
@@ -47,9 +51,10 @@ import { RestProvider } from '../providers/rest/rest';
   providers: [
     StatusBar,
     SplashScreen,
-    GoogleMaps,
+    Geolocation,
 
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    RestProvider,
     RestProvider
   ]
 })

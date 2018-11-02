@@ -9,20 +9,21 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class RestProvider {
-  apiUrl = 'http://recycle-test.3p3a26xy7t.us-west-2.elasticbeanstalk.com/';
+  apiUrl = 'http://172.16.4.87:8000';
   constructor(public http: HttpClient) {
     console.log('Hello RestProvider Provider');
-    this.getItems();
+    var result = this.getItems("Bicycle");
+    console.log("result: " , result);
   }
-  getItems() {
+  public async getItems(item: string) {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl + '/recycle_db/').subscribe(data => {
+      this.http.get(this.apiUrl + '/recycle_db/' + item).subscribe(data => {
         resolve(data); 
         console.log("data: " , data);
-        console.log("items: " , data.item);
+        // console.log("items: " , data.item);
       },
         err => {
-          console.log("error: " + err);
+          console.log("REST error: " , err);
           
       });
     });

@@ -7,6 +7,12 @@
 </ion-header>
 
 <ion-content>
+    <ion-searchbar
+    [(ngModel)]="searchTerm"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="setFilteredItems()"
+    (ionCancel)="onCancel($event)">
+  </ion-searchbar>
 <ion-list inset>
 <!-- <ion-item *ngFor = "let item of items"> -->
   <!-- <h1>{{data.item}}</h1>
@@ -14,7 +20,7 @@
   <h3>{{data.locations}</h3> -->
 <!-- </ion-item> -->
 </ion-list>
+
+<img src="assets/imgs/paul_robertson_forever_city.gif" alt="Forever City">
+
 </ion-content>
-
-
-

@@ -2,14 +2,16 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Locations
+      Recycling Locations
     </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="addMarker()"><ion-icon name="add"></ion-icon>Add Marker</button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    <div id="map"></div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJqhdVe340-c7Doq9EfI-rQV4aSFtDP4g&callback=initMap" async defer></script>
+    <div #map id="map"></div>
+    <!----<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJqhdVe340-c7Doq9EfI-rQV4aSFtDP4g&callback=initMap" async defer></script>-->
  
-beep boop
 </ion-content>
