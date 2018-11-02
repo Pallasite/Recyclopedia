@@ -1,13 +1,7 @@
-<<<<<<< HEAD
 import { Component, NgModule, ViewChild, ElementRef } from '@angular/core';
-=======
-import { Component, NgModule, OnInit } from '@angular/core';
->>>>>>> 3b4e837a36b427c08d174285d9c24205df037a42
 import { NavController, Platform } from 'ionic-angular';
 import { GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
-
-declare var google: any;
 
 declare var google: any;
 
@@ -18,33 +12,13 @@ declare var google: any;
 })
 
 export class LocationsPage {
-  // map: GoogleMap;
-   /*
-    constructor(
-    public navCtrl: NavController, 
-    public platform: Platform,
-    private _googleMaps: GoogleMaps
-    ) {
-       var map;
-       function initMap() {
-         map = new google.maps.Map(document.getElementById('map'), {
-           center: {lat: -34.397, lng: 150.644},
-           zoom: 8
-         });
-       }
-       ngAfterViewInit() {
-        const options: any = { ... } // put your config here
-        const map: GoogleMap = this.googleMaps.create('map', options);
-       }
-       this._googleMaps.isAvailable().then(() =>
-      }
-      */
+ 
      @ViewChild('map') mapElement: ElementRef;
      map: any;
     
-     constructor(public navCtrl: NavController, public geolocation: Geolocation) {
+  constructor(public navCtrl: NavController, public geolocation: Geolocation) {
     
-     }
+  }
     
      ionViewDidLoad(){
        this.loadMap();

@@ -14,13 +14,13 @@ export class SearchPage {
       this.getItems();
   }
 
-  getItems() {
-    this.restProvider.getItems()
-      .then(data => {
-        this.items = data;
+  // getItems() {
+  //   this.restProvider.getItems()
+  //     .then(data => {
+  //       this.items = data;
 
-      });
-  }
+  //     });
+  // }
 
   getItems() {
     // console.log("getting items");
