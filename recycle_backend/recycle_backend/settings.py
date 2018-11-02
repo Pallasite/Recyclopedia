@@ -25,7 +25,13 @@ SECRET_KEY = 'bh4gi#s_b4q0crg*+li=ugh)!9#6lr9o=qj01*fr%+u+rzwiwj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['127.0.0.1',
+                'recycle-test.3p3a26xy7t.us-west-2.elasticbeanstalk.com',
+                '0.0.0.0',
+                '*']
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Application definition
@@ -39,9 +45,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'recycle_db.apps.RecycleDbConfig',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
