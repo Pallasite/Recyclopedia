@@ -10,10 +10,11 @@ from rest_framework.permissions import AllowAny
 def recyclable_list(request):
     if request.method == 'GET':
         recyclable = Recyclable.objects.all()
+        #search = Recyclable.objects.raw("SELECT methods FROM  recycle_db_recyclable WHERE item = \"Bicycle\"")
         serializer = RecyclableSerializer(recyclable, many=True)
         return Response(serializer.data)
 
-    elif request.method == 'POST': 
+    elif request.method == 'POST':
         serializer = RecyclableSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -22,14 +23,15 @@ def recyclable_list(request):
 
 @api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes((AllowAny, ))
-def recyclable_detail(request, pk):
-    try: 
-        recyclable = Recyclable.objects.get(pk=pk)
+def recyclable_detail(request, item):
+    try:
+        recyclable = Recyclable.objects.filter(item__icontains=item)
+        #recyclable = Recyclable.objects.get(pk=pk)
     except Recyclable.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
-    
+
     if request.method == 'GET':
-        serializer = RecyclableSerializer(recyclable)
+        serializer = RecyclableSerializer(recyclable, many=True)
         return Response(serializer.data)
 
     elif request.method == 'PUT':
@@ -42,10 +44,3 @@ def recyclable_detail(request, pk):
     elif request.method == 'DELETE':
         recyclable.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-        
-
-
-
-
-
-

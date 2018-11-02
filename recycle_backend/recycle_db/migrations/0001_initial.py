@@ -14,11 +14,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Recyclable',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created', models.DateTimeField(auto_now_add=True)),
                 ('item', models.CharField(blank=True, default='', max_length=100)),
                 ('methods', models.TextField()),
-                ('locations', models.TextField()),
             ],
             options={
                 'ordering': ('created',),

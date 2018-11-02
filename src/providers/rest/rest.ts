@@ -9,14 +9,14 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class RestProvider {
-  apiUrl = 'http://localhost:1337/127.0.0.1:8000';
+  apiUrl = 'http://recycle-test.3p3a26xy7t.us-west-2.elasticbeanstalk.com/';
   constructor(public http: HttpClient) {
     console.log('Hello RestProvider Provider');
     this.getItems();
   }
   getItems() {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl + '/recycle_db/1/').subscribe(data => {
+      this.http.get(this.apiUrl + '/recycle_db/').subscribe(data => {
         resolve(data); 
         console.log("data: " , data);
         console.log("items: " , data.item);
