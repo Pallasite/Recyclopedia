@@ -8,9 +8,9 @@
 
 <ion-content>
     <ion-searchbar
-    [(ngModel)]="myInput"
+    [(ngModel)]="searchTerm"
     [showCancelButton]="shouldShowCancel"
-    (ionInput)="onInput($event)"
+    (ionInput)="setFilteredItems()"
     (ionCancel)="onCancel($event)">
   </ion-searchbar>
 <ion-list inset>
