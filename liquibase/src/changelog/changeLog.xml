@@ -11,7 +11,7 @@ For use with Liquibase.
 		<changeSet id="1" author="wchen329">
 			<createTable tableName="Recyclator">
 				<column name="id" type="bigint"/>
-				<column name="name" type="text"/>
+				<column name="item" type="text"/>
 				<column name="action" type="text"/>
 			</createTable>
 		</changeSet>
