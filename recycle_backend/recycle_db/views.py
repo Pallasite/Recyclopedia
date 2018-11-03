@@ -3,10 +3,8 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from recycle_db.models import Recyclable
 from recycle_db.serializers import RecyclableSerializer
-from rest_framework.permissions import AllowAny
 
 @api_view(['GET', 'POST'])
-@permission_classes((AllowAny, ))
 def recyclable_list(request):
     if request.method == 'GET':
         recyclable = Recyclable.objects.all()
@@ -21,7 +19,6 @@ def recyclable_list(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
-@permission_classes((AllowAny,))
 def recyclable_search(request, search):
     recyclable_search = Recyclable.objects.filter(
                     item__icontains=search)[:50]
@@ -40,7 +37,6 @@ def recyclable_search(request, search):
     return Response(serializer.data)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-@permission_classes((AllowAny, ))
 def recyclable_detail(request, item):
     try:
         recyclable = Recyclable.objects.get(item=item)
