@@ -1,7 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-	<project xmlns="http://maven.apache.org/POM/4.0.0"
+<!-- 
+This POM file is for use with the Liquibase plugin to Apache Maven.
+It requires credentials to be specified by the user.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
 		http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	</project>
-</xml>
+
+	<modelVersion>4.0.0</modelVersion>
+	<version>1.0.0</version>
+	<artifactId>recyclopedia-liquibase</artifactId>
+	<groupId>edu.wisc.cs</groupId>
+
+	<properties>
+			<liq.ver>3.6.2</liq.ver>
+			<liq.context>recyclopedia</liq.context>
+			<liq.database>jdbc:postgresql</liq.database>
+			<liq.port>5432</liq.port>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+			<version>3.6.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.3-1103-jdbc41</version>
+		</dependency>
+
+		<!-- Uncomment and specify plugin repository for SQLite support
+		<dependency>
+			<groupId>org.sqlite</groupId>
+			<artifactId>sqlite</artifactId>
+			<version>3.25.2</version>
+		</dependency>
+		-->
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<version>3.6.2</version>
+				<configuration>
+					<changeLogFile>src/changelog/changeLog.xml</changeLogFile>
+					<url>${liq.database}://127.0.0.1:${liq.port}/${liq.context}</url>
+					<username></username>
+					<password></password>
+					<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+					<schemas>public</schemas>
+					<contexts>default</contexts>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

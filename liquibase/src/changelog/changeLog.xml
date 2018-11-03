@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+The default stored configuration for the Recyclopedia database.
+For use with Liquibase.
+-->
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+					http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+		<changeSet id="1" author="wchen329">
+			<createTable tableName="Recyclator">
+				<column name="id" type="bigint"/>
+				<column name="item" type="text"/>
+				<column name="action" type="text"/>
+			</createTable>
+		</changeSet>
+</databaseChangeLog>
