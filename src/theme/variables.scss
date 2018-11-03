@@ -8,17 +8,50 @@ $font-path: "../assets/fonts";
 // google font request possible here for dynamic font changing?
 // ( to easily test fonts and not have to download them to try them? not sure if possible)
 
-@import url('https://fonts.googleapis.com/css?family=Baumans|Monoton');
+//Vapor
+//
+// @import url('https://fonts.googleapis.com/css?family=Baumans|Monoton');
+//
+//
+//
+// // font-family: 'Baumans', cursive;
+// // font-family: 'Monoton', cursive;
+//
+// $font-family-md-base: 'Baumans', cursive;
+// // $toolbar-title: 'Monoton', cursive;
+//
+// ion-title
+// {
+//   font-family: 'Monoton', cursive;
+//   text-align: center;
+//   font-size: 300%;
+//   font-weight: bold;
+// };
+//
+// body, h1, h2, h3, p
+// {
+//   text-align: center;
+//   color: #65ff37;
+// };
+
+
+@import url('https://fonts.googleapis.com/css?family=Fugaz+One|Source+Sans+Pro');
+
 
 // font-family: 'Baumans', cursive;
 // font-family: 'Monoton', cursive;
 
-$font-family-md-base: 'Baumans', cursive;
+//font-family: 'Source Sans Pro', sans-serif;
+//font-family: 'Fugaz One', cursive;
+
+
+
+$font-family-md-base: 'Source Sans Pro', sans-serif;
 // $toolbar-title: 'Monoton', cursive;
 
 ion-title
 {
-  font-family: 'Monoton', cursive;
+  font-family: 'Fugaz One', cursive;
   text-align: center;
   font-size: 300%;
   font-weight: bold;
@@ -27,8 +60,9 @@ ion-title
 body, h1, h2, h3, p
 {
   text-align: center;
-  color: #65ff37;
+
 };
+
 
 // The app direction is used to include
 // rtl styles in your app. For more info, please see:
@@ -85,21 +119,22 @@ $app-direction: ltr;
 
 // Responsible color schemes I guess :S
 $colors: (
-  primary:    #0CE9E9,
+  primary:    #3e721d,
   secondary:  #544A75,
-  danger:     #2D5170,
-  light:      #0AE9E9,
+  danger:     #f26157,
+  light:      #77b255,
   dark:       #152331
 );
 
-$toolbar-background: #D9007D;
-$tabs-background: #D9007D;
+$toolbar-background: #28536b;
+$tabs-background: #28536b;
 
-$tabs-tab-color-inactive: #05211f;
-$tabs-md-tab-color-inactive: #05211f;
+$tabs-tab-color-inactive: #c2948a;
+$tabs-md-tab-color-inactive: #c2948a;
+$tabs-md-tab-color-active: #fb6107;
 //Why do I have to use the -md- for things? what does this evven mean?
 
-$background-color: #544A75;
+$background-color: #7d98a1;
 
 
 // App iOS Variables
