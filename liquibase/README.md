@@ -7,5 +7,7 @@ Liquibase may be used through Apache Maven through the update goal:
 mvn liquibase:update
 ```
 
-Before using Maven, however, the credentials to the database server and the exaact connection details such as URL must be specified in the accompanying POM file.
+Before using Maven, however, the credentials to the database server and the exaact connection details such as URL must be specified in the accompanying POM file. The POM file assumes that a PostgreSQL database is used from the start. Other databases may be used, but it may be easier to use the full Liquibase distribution or to specify a SQLite compatible plugin.
+
+
 Liquibase also has a non-Maven tool for download which can be used with the included changelog.
