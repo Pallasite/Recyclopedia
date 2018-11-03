@@ -8,7 +8,7 @@ Recyclopedia is to be a platform for providing easy access to detailed informati
 
 
 The Ionic front end can be viewed by installing Node.js LTS, once installed run commands
-    $sudo npm install -g cordova
+$sudo npm install -g cordova
 $sudo    npm install -g ionic
 Then, navigate to the git project directory and run
     $ionic serve
