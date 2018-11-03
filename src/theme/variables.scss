@@ -26,6 +26,7 @@ ion-title
 
 body, h1, h2, h3, p
 {
+  text-align: center;
   color: #65ff37;
 };
 
@@ -64,7 +65,25 @@ $app-direction: ltr;
 //   dark:       #222
 // );
 
-// VaporWave
+// // VaporWave
+// $colors: (
+//   primary:    #0CE9E9,
+//   secondary:  #544A75,
+//   danger:     #2D5170,
+//   light:      #0AE9E9,
+//   dark:       #152331
+// );
+//
+// $toolbar-background: #D9007D;
+// $tabs-background: #D9007D;
+//
+// $tabs-tab-color-inactive: #05211f;
+// $tabs-md-tab-color-inactive: #05211f;
+// //Why do I have to use the -md- for things? what does this evven mean?
+//
+// $background-color: #544A75;
+
+// Responsible color schemes I guess :S
 $colors: (
   primary:    #0CE9E9,
   secondary:  #544A75,
