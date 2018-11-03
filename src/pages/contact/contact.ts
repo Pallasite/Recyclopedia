@@ -4,7 +4,6 @@ import { NavController } from 'ionic-angular';
 @Component({
   selector: 'page-contact',
   templateUrl: 'contact.html'
-  // template: ``
 })
 export class FormsPage {
   todo = {}
