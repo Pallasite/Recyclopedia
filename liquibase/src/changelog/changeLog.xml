@@ -13,6 +13,7 @@ For use with Liquibase.
 				<column name="id" type="bigint"/>
 				<column name="item" type="text"/>
 				<column name="action" type="text"/>
+				<column name="members" type="bigint[]"/>
 			</createTable>
 		</changeSet>
 </databaseChangeLog>
