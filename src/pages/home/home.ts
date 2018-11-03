@@ -7,12 +7,15 @@ import { FormsPage } from '../contact/contact';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  cards: any;
+  category: string = 'gear';
+
   constructor(
     public navCtrl: NavController
     // public viewCtrl: ViewController
-    
-    ) {
 
+    ) {
+         this.cards = new Array(5);
   }
   public openForm() {
     // push contact component on stack

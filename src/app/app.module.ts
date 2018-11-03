@@ -15,6 +15,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
 
+// Django/Rest Imports
+import { HttpClientModule } from '@angular/common/http';
+import { RestProvider } from '../providers/rest/rest';
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -28,7 +33,9 @@ import { GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
+    
   ],
   bootstrap: [IonicApp],
     entryComponents: [
@@ -46,7 +53,9 @@ import { GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
     SplashScreen,
     Geolocation,
 
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    RestProvider,
+    RestProvider
   ]
 })
 export class AppModule {}

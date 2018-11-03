@@ -8,6 +8,26 @@ $font-path: "../assets/fonts";
 // google font request possible here for dynamic font changing?
 // ( to easily test fonts and not have to download them to try them? not sure if possible)
 
+@import url('https://fonts.googleapis.com/css?family=Baumans|Monoton');
+
+// font-family: 'Baumans', cursive;
+// font-family: 'Monoton', cursive;
+
+$font-family-md-base: 'Baumans', cursive;
+// $toolbar-title: 'Monoton', cursive;
+
+ion-title
+{
+  font-family: 'Monoton', cursive;
+  text-align: center;
+  font-size: 300%;
+  font-weight: bold;
+};
+
+body, h1, h2, h3, p
+{
+  color: #65ff37;
+};
 
 // The app direction is used to include
 // rtl styles in your app. For more info, please see:
@@ -36,13 +56,31 @@ $app-direction: ltr;
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
 
+// $colors: (
+//   primary:    #6b9b37,
+//   secondary:  #bcaaa4,
+//   danger:     #f53d3d,
+//   light:      #f4f4f4,
+//   dark:       #222
+// );
+
+// VaporWave
 $colors: (
-  primary:    #6b9b37,
-  secondary:  #bcaaa4,
-  danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222
+  primary:    #0CE9E9,
+  secondary:  #544A75,
+  danger:     #2D5170,
+  light:      #0AE9E9,
+  dark:       #152331
 );
+
+$toolbar-background: #D9007D;
+$tabs-background: #D9007D;
+
+$tabs-tab-color-inactive: #05211f;
+$tabs-md-tab-color-inactive: #05211f;
+//Why do I have to use the -md- for things? what does this evven mean?
+
+$background-color: #544A75;
 
 
 // App iOS Variables
@@ -89,11 +127,11 @@ $colors: (
 
  @import "roboto";
  @import "noto-sans";
- 
 
 
 
-// probably delete below 
+
+// probably delete below
 
 
 // @font-face {
@@ -107,5 +145,5 @@ $colors: (
 // // android
 // $font-family-md-base: ‘Source Sans Pro’;
 
-// // windows 
+// // windows
 // $font-family-wp-base: ‘Source Sans Pro’;

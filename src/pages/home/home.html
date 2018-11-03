@@ -5,20 +5,62 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Home Page</h2>
-  <p>Events Scroll Here (try both x/y scroll?)
-    <ion-list>
+    
+  <p style="margin-left: 20px"></p>
+  <h3>News Feed</h3>
+  <p style="margin-left: 20px">padding-right: 5px</p>
+  <!---
+  <ion-segment [(ngModel)]="category">
+        <ion-segment-button value="gear">
+            Events
+        </ion-segment-button>
+        <ion-segment-button value="clothing">
+            News
+        </ion-segment-button>
+        <ion-segment-button value="nutrition">
+            Nutrition
+        </ion-segment-button>
+    </ion-segment>
+    --->
+ 
+    <ion-card *ngFor="let card of cards">
+ 
       <ion-item>
-        <ion-thumbnail item-start>
-          <!--an array here of (local?) recycling events-->
-          <!--<img src="../assets/imgs/..."> -->
-        </ion-thumbnail>
+        <ion-avatar item-left>
+          <img src= "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Recycle001.svg/2000px-Recycle001.svg.png" />
+        </ion-avatar>
+        <h2>Dude</h2>
       </ion-item>
-    </ion-list>
-  </p>
+ 
+      <img src= "https://www.waste360.com/sites/waste360.com/files/styles/article_featured_retina/public/recycling%20bins%20recyclables%20flying%20above-ts-680657646-1540.jpg?itok=oxrIRJY9" />
+ 
+      <ion-card-content>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+      </ion-card-content>
 
-  <h3>News?</h3>
-  
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="thumbs-up"></ion-icon>
+            <div>12 Likes</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="text"></ion-icon>
+            <div>4 Comments</div>
+          </button>
+        </ion-col>
+        <ion-col center text-center>
+          <ion-note>
+            11h ago
+          </ion-note>
+        </ion-col>
+      </ion-row>
+ 
+    </ion-card>
+
+    <br>
     <h3>Become an Admin.</h3>
     <p>Apply as admin to blah blah blah. or submit form ?</p>
     <button ion-button (click)="openForm()" block>Open form</button>
