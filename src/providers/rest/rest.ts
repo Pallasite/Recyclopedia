@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class RestProvider {
-  apiUrl = 'http://10.141.23.242:8000';
+  apiUrl = 'http://192.168.1.9:8000';
   constructor(public http: HttpClient) {
     console.log('Hello RestProvider Provider');
   }
