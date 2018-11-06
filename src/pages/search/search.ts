@@ -1,44 +1,69 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
-// import { Data } from '../../providers/data/data';
+import { ItemPage } from '../itemPage/itemPage';
 
 @Component({
   selector: 'page-search',
   templateUrl: 'search.html'
 })
 export class SearchPage {
-  items: any;
+  public items: any = [];
   searchTerm: string = '';
   
-  constructor(public navCtrl: NavController, public restProvider: RestProvider) {
-    // search connection here with database
-      //this.getItem();
-      // this.restProvider.getItem("Bicycle");
-      // console.log("working");
-      
+  constructor(
+    public navCtrl: NavController,
+    public restProvider: RestProvider,
+    public navParams: NavParams
+    ) {
+      // let search = new SearchPage(this.items, this.items, this.items);
+      // search.items = 'items';
+      // console.log("items: beep: " , search.items);
   }
  
     ionViewDidLoad() {
-      console.log("ionViewDidLoad");
+      // console.log("ionViewDidLoad");
         this.setFilteredItems();
+      }
  
-    }
- 
-    setFilteredItems() {
+    public async setFilteredItems() {
+      // clear items while user types
+      this.items = [];
+
+      // search connection with our REST provider
         if (this.searchTerm) {
-        this.items = this.restProvider.getItems(this.searchTerm);
-        console.log("THIS.ITEMS: " ,  this.items);
-        }
-    }
+          this.restProvider.searchItems(this.searchTerm)
+          .then(data => {
+            this.items = data;
+            console.log("data: " , data);
 
-  // getItem() {
-  //   console.log("getting items");
-  //   this.restProvider.getItems().then(data => {
-  //       this.items = data;
-  //       console.log("this.items " , this.items);
+          });
+        
+          console.log("items: " , this.items);
+        } 
+      }
 
-  //     });
-  // }
+      public showItemPage() {
+        console.log("pushing item page");
+        this.navCtrl.push(ItemPage);
+      }
 
-}
+
+      // not ready for itr 1
+      public async getItemName() {
+        console.log("sending items");
+        return await this.items;
+      }
+
+
+
+
+
+
+
+
+
+  }
+  
+
+
