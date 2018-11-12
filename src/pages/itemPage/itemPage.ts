@@ -1,33 +1,57 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-// import { SearchPage } from '../search/search';
-import { RestProvider } from '../../providers/rest/rest';
+import { NavController, NavParams, Events } from 'ionic-angular';
+
+
 
 @Component({
   selector: 'page-item',
   templateUrl: 'itemPage.html'
-//   providers: [SearchPage, RestProvider]
+
 })
 export class ItemPage {
-    // public search: SearchPage;
-    // public navCtrl: NavController;
-    
+
     constructor(
         public navCtrl: NavController,
         public navParams: NavParams,
-        // public search: SearchPage,
-        // public restProvider : RestProvider
+        public event: Events
+       
         ) {
-
-            // var things = this.navParams.get('items');
-            // console.log("ITEMS PAGE items: , " , things);
+            // receives event emitted from Search module
+            this.event.subscribe('item:clicked', (itemInfo) => {
+                this.getItemInfo(itemInfo);
+            });
       }
 
     public async ionViewDidLoad() {
 
-        //var item = await this.search.getItemName();
-        // console.log("item: " , item);
+        // this.getItemInfo();
+        
     }
+
+    public async getItemInfo(itemInfo: any) {
+
+        if (itemInfo) {
+            var name = await itemInfo[0];
+            var methods = await itemInfo[1];
+            console.log("Name and Methods: " + name + ": " + methods);
+
+            // just trying to display name for now
+            return await name;
+        }
+    }
+
+
+    // To display on itemPage
+
+    // public getName() {
+    //     return name;
+    // }
+    // public getMethods() {
+    //     return methods;
+    // }
+    
+
+
 
 }
 
