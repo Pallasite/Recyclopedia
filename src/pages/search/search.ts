@@ -11,7 +11,7 @@ import { ItemPage } from '../itemPage/itemPage';
 export class SearchPage {
   public items: any = [];
   searchTerm: string = '';
-  
+  public itemInfo: any;
   constructor(
     public navCtrl: NavController,
     public restProvider: RestProvider,
@@ -47,7 +47,7 @@ export class SearchPage {
 
       public showItemPage() {
         console.log("pushing item page");
-        this.navCtrl.push(ItemPage);
+        this.navCtrl.push(ItemPage, {'name': this.itemInfo[0], 'methods': this.itemInfo[1]});
       }
 
 
@@ -68,9 +68,9 @@ export class SearchPage {
           // console.log("itemInfo: " , itemInfo);
 
           // to send itemInfo to itemPage
-          this.event.publish('item:clicked', itemInfo);
+          //this.event.publish('item:clicked', itemInfo);
 
-          return itemInfo;
+          this.itemInfo = itemInfo;
           
         }
       }

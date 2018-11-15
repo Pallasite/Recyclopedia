@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, Events } from 'ionic-angular';
+import { NavController, NavParams, Events, Item } from 'ionic-angular';
+import { RestProvider } from '../../providers/rest/rest';
 
 
 
@@ -9,47 +10,20 @@ import { NavController, NavParams, Events } from 'ionic-angular';
 
 })
 export class ItemPage {
-
+   public itemInfo: any;
+   public name: string;
+   public methods: string;
     constructor(
         public navCtrl: NavController,
         public navParams: NavParams,
-        public event: Events
-       
+        public event: Events,
+        public restProvider: RestProvider,
         ) {
-            // receives event emitted from Search module
-            this.event.subscribe('item:clicked', (itemInfo) => {
-                this.getItemInfo(itemInfo);
-            });
+            // receives parameters from Search module
+            this.name = navParams.get('name');
+            this.methods = navParams.get('methods');
+            
       }
-
-    public async ionViewDidLoad() {
-
-        // this.getItemInfo();
-        
-    }
-
-    public async getItemInfo(itemInfo: any) {
-
-        if (itemInfo) {
-            var name = await itemInfo[0];
-            var methods = await itemInfo[1];
-            console.log("Name and Methods: " + name + ": " + methods);
-
-            // just trying to display name for now
-            return await name;
-        }
-    }
-
-
-    // To display on itemPage
-
-    // public getName() {
-    //     return name;
-    // }
-    // public getMethods() {
-    //     return methods;
-    // }
-    
 
 
 
