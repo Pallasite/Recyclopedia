@@ -65,7 +65,7 @@ $app-direction: ltr;
 //   dark:       #222
 // );
 
-// VaporWave
+// VaporWave Theme
 // $colors: (
 //   primary:    #0CE9E9,
 //   secondary:  #544A75,
@@ -73,6 +73,13 @@ $app-direction: ltr;
 //   light:      #0AE9E9,
 //   dark:       #152331
 // );
+
+// $toolbar-background: #D9007D;
+// $tabs-background: #D9007D;
+// $background-color: #544A75;
+
+
+// Recyclopedia Original Demo Theme
 $colors: (
   primary:    #9ccc65,
   secondary:  #00897b,
@@ -81,16 +88,15 @@ $colors: (
   dark:       black
 );
 
-// $toolbar-background: #D9007D;
-// $tabs-background: #D9007D;
 $toolbar-background: #00897b;
 $tabs-background: #00897b;
 
 $tabs-tab-color-inactive: #05211f;
 $tabs-md-tab-color-inactive: #05211f;
-//Why do I have to use the -md- for things? what does this evven mean?
 
-// $background-color: #544A75;
+//Why do I have to use the -md- for things? what does this evven mean?
+// Material Design, android?
+
 $background-color: white;
 
 
@@ -111,9 +117,6 @@ $background-color: white;
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
-
-
-
 
 // App Theme
 // --------------------------------------------------
@@ -139,22 +142,3 @@ $background-color: white;
  @import "roboto";
  @import "noto-sans";
 
-
-
-
-// probably delete below
-
-
-// @font-face {
-// font-family: Source Sans Pro;
-// src: url(“../assets/fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf”);
-// }
-
-// // ios
-// $font-family-ios-base: ‘Source Sans Pro’;
-
-// // android
-// $font-family-md-base: ‘Source Sans Pro’;
-
-// // windows
-// $font-family-wp-base: ‘Source Sans Pro’;
