@@ -51,10 +51,7 @@
   "description": "An Ionic project",
   "cordova": {
     "plugins": {
-      "cordova-plugin-advanced-http": {}
-    }
-  }
-}
+      "cordova-plugin-advanced-http": {},
       "cordova-plugin-whitelist": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-device": {},
