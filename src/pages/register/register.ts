@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 // import { HTTP } from '@ionic-native/http';
 import { RestProvider } from '../../providers/rest/rest';
+import {Validators, FormBuilder, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'page-register',
