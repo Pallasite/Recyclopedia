@@ -2,7 +2,8 @@ recycle_backend/recycle_backend/__pycache__/*
 recycle_backend/recycle_db/__pycache__/*
 node_modules/
 www/
-*.js.map
+/.sourcemaps/*.js.map
+
 .gitignore
 .gitignore 2
 .sourcemaps/*
