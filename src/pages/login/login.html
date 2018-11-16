@@ -6,16 +6,15 @@
 </ion-header>
 
 <form id="form" (ngSubmit)="logForm()">
-  <!--<form id="form"> -->
       <ion-item>
         <ion-label>Username:</ion-label>
-        <ion-input type="text" [(ngModel)]="login.title" name="title"></ion-input>
+        <ion-input required type="text" [(ngModel)]="login.username" name="username"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Password:</ion-label>
-        <ion-textarea [(ngModel)]="login.description" name="description"></ion-textarea>
+        <ion-textarea required type="password" [(ngModel)]="login.password" name="password"></ion-textarea>
       </ion-item>
       <button ion-button type="submit" block>Log in</button>
-      <button ion-button type="submit" block>Sign up</button>
     </form>
+    <button ion-button (click)="registerUser()" type="submit" block>Sign up</button>
    

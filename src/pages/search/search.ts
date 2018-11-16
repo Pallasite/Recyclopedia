@@ -19,13 +19,10 @@ export class SearchPage {
     public event: Events,
     public itemPage: ItemPage
     ) {
-      // let search = new SearchPage(this.items, this.items, this.items);
-      // search.items = 'items';
-      // console.log("items: beep: " , search.items);
+      
   }
  
     ionViewDidLoad() {
-      // console.log("ionViewDidLoad");
         this.searchItems();
       }
  
