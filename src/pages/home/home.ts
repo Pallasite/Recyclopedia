@@ -26,7 +26,7 @@ export class HomePage {
   // this.navCtrl.push(FormsPage, obj->adminAuthAuth=true);
   }
   public openSideMenu() {
-
+    this.navCtrl.push(FormsPage);
   }
 
 }

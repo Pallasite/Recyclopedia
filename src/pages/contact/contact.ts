@@ -9,5 +9,7 @@ export class FormsPage {
   todo = {}
   logForm() {
     console.log(this.todo)
+    var username = this.todo[0];
+    var pw = this.todo[1];
   }
 }
