@@ -24,3 +24,4 @@ src/assets/imgs/.paul_robertson_dna.gif.icloud
 src/pages/home/home.html.html
 src/providers/data/
 .sourcemaps/main.js.map
+*.swp

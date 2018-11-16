@@ -1,15 +1,18 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { HTTP } from '@ionic-native/http';
 
 @Component({
   selector: 'page-contact',
   templateUrl: 'contact.html'
 })
 export class FormsPage {
-  todo = {}
+  login = {}
   logForm() {
-    console.log(this.todo)
-    var username = this.todo[0];
-    var pw = this.todo[1];
+    console.log(this.login)
+    var username = this.login[0];
+    var pw = this.login[1];
+
+    
   }
 }

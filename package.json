@@ -21,6 +21,7 @@
     "@angular/platform-browser": "5.2.11",
     "@angular/platform-browser-dynamic": "5.2.11",
     "@ionic-native/core": "^3.14.0",
+    "@ionic-native/http": "^3.3.1",
     "@ionic-native/geolocation": "^3.14.0",
     "@ionic-native/google-maps": "^3.3.1",
     "@ionic-native/splash-screen": "3.3.1",
@@ -36,7 +37,7 @@
     "zone.js": "0.8.26"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "^3.1.7-201801172029",
+    "@ionic/app-scripts": "3.2.0",
     "typescript": "~2.6.2"
   },
   "description": "An Ionic project"
