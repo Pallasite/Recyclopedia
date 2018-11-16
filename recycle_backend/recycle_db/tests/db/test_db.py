@@ -1,5 +1,5 @@
 import unittest
-#import psycopg2
+import psycopg2
 
 # Runs the whole test suite for unit tests
 # pertaining to the database
