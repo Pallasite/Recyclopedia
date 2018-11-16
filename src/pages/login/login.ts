@@ -10,7 +10,8 @@ import { RestProvider } from '../../providers/rest/rest'
 
 export class FormsPage {
 
-  constructor(public loginHTTP : HTTP){}
+  constructor(public loginHTTP : HTTP,
+  	      public rest : RestProvider  ){}
 
   login = {}
   logForm() {
@@ -21,6 +22,6 @@ export class FormsPage {
     var params = {};
     var token = "Authentication: a";
     var headers = {"token":token};
-    this.loginHTTP.get(RestProvider.apiUrl, {}, headers);
+    this.loginHTTP.get(rest.apiUrl, {}, headers);
   }
 }
