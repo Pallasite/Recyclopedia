@@ -16,15 +16,19 @@ ion-title
 {
   font-family: 'Fugaz One', cursive;
   text-align: center;
-  font-size: 300%;
+  font-size: 100%;
   font-weight: bold;
 };
 
 body, h1, h2, h3, p
 {
+  font-size: 100%;
   text-align: center;
   color: black;
 };
+
+$button-md-text-transform: none;
+
 
 // The app direction is used to include
 // rtl styles in your app. For more info, please see:
@@ -94,7 +98,7 @@ $tabs-md-tab-color-inactive: #21051b;
 //Why do I have to use the -md- for things? what does this evven mean?
 // Material Design, android?
 
-$background-color: white;
+$background-color: #ffeecf;
 
 
 // App iOS Variables

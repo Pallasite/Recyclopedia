@@ -17,7 +17,7 @@ export class HomePage {
     // public viewCtrl: ViewController
 
     ) {
-         this.cards = new Array(5);
+         this.cards = new Array(2);
   }
   public openForm() {
     // push contact component on stack

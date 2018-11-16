@@ -1,15 +1,26 @@
 <ion-header>
   <ion-navbar style="opacity: 1;">
-    <ion-title>Home</ion-title>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+
+        </ion-col>
+        <ion-col>
+          <ion-title>Home</ion-title>
+        </ion-col>
+        <ion-col>
+          <button ion-button (click)="openSideMenu()" id="menu-button1" round>Log In </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
     <!-- Menu button  -->
     <!-- <button ion-fab mini icon-only (click)="openSideMenu()" id="menu-button">
       <ion-icon name="menu"></ion-icon>
     </button>  -->
-    <button ion-button (click)="openSideMenu()" id="menu-button1">Log In
-    </button>
+
   </ion-navbar>
 </ion-header>
->
+
 <ion-content padding>
 
   <p style="margin-left: 20px"></p>
