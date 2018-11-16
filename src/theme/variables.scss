@@ -8,17 +8,13 @@ $font-path: "../assets/fonts";
 // google font request possible here for dynamic font changing?
 // ( to easily test fonts and not have to download them to try them? not sure if possible)
 
-@import url('https://fonts.googleapis.com/css?family=Baumans|Monoton');
+@import url('https://fonts.googleapis.com/css?family=Fugaz+One|Source+Sans+Pro');
 
-// font-family: 'Baumans', cursive;
-// font-family: 'Monoton', cursive;
-
-$font-family-md-base: 'Baumans', cursive;
-// $toolbar-title: 'Monoton', cursive;
+$font-family-md-base: 'Source Sans Pro', sans-serif;
 
 ion-title
 {
-  font-family: 'Monoton', cursive;
+  font-family: 'Fugaz One', cursive;
   text-align: center;
   font-size: 300%;
   font-weight: bold;
@@ -26,7 +22,7 @@ ion-title
 
 body, h1, h2, h3, p
 {
-  // color: #65ff37;
+  text-align: center;
   color: black;
 };
 
@@ -81,7 +77,8 @@ $app-direction: ltr;
 
 // Recyclopedia Original Demo Theme
 $colors: (
-  primary:    #9ccc65,
+  primary:    #77B254,
+  //primary:    #9ccc65,
   secondary:  #00897b,
   danger:     red,
   light:      white,
@@ -91,8 +88,8 @@ $colors: (
 $toolbar-background: #00897b;
 $tabs-background: #00897b;
 
-$tabs-tab-color-inactive: #05211f;
-$tabs-md-tab-color-inactive: #05211f;
+$tabs-tab-color-inactive: #21051b;
+$tabs-md-tab-color-inactive: #21051b;
 
 //Why do I have to use the -md- for things? what does this evven mean?
 // Material Design, android?
@@ -141,4 +138,3 @@ $background-color: white;
 
  @import "roboto";
  @import "noto-sans";
-
