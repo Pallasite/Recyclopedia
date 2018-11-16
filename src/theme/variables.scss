@@ -81,7 +81,7 @@ $app-direction: ltr;
 
 // Recyclopedia Original Demo Theme
 $colors: (
-  primary:    #77B254,
+  primary:    #76d040,
   //primary:    #9ccc65,
   secondary:  #007290,
   danger:     red,
@@ -92,6 +92,7 @@ $colors: (
 $toolbar-background: #007290;
 $tabs-background: #007290;
 
+$tabs-tab-color-active: #76d040;
 $tabs-tab-color-inactive: #21051b;
 $tabs-md-tab-color-inactive: #21051b;
 
