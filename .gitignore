@@ -25,3 +25,6 @@ src/pages/home/home.html.html
 src/providers/data/
 .sourcemaps/main.js.map
 *.swp
+platforms/*
+package-lock.json
+config.xml
