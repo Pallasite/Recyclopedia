@@ -7,10 +7,10 @@ import { LocationsPage } from '../pages/locations/locations';
 import { SearchPage } from '../pages/search/search';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
-import { BarcodeScan } from '../pages/scan/scan';
+import { UserProfile } from '../pages/profile/profile';
 import { Favorites } from '../pages/favorites/favorites';
 import { Geolocation } from '@ionic-native/geolocation';
-import { FormsPage } from '../pages/contact/contact';
+import { FormsPage } from '../pages/login/login';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
@@ -27,7 +27,7 @@ import { RestProvider } from '../providers/rest/rest';
     SearchPage,
     HomePage,
     TabsPage,
-    BarcodeScan,
+    UserProfile,
     Favorites,
     FormsPage,
     ItemPage,
@@ -45,7 +45,7 @@ import { RestProvider } from '../providers/rest/rest';
       SearchPage,
       HomePage,
       TabsPage,
-      BarcodeScan,
+      UserProfile,
       Favorites,
       FormsPage,
       ItemPage,

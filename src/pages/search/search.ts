@@ -1,20 +1,23 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Events } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 import { ItemPage } from '../itemPage/itemPage';
 
 @Component({
   selector: 'page-search',
-  templateUrl: 'search.html'
+  templateUrl: 'search.html',
+  providers: [ItemPage]
 })
 export class SearchPage {
   public items: any = [];
   searchTerm: string = '';
-  
+  public itemInfo: any;
   constructor(
     public navCtrl: NavController,
     public restProvider: RestProvider,
-    public navParams: NavParams
+    public navParams: NavParams,
+    public event: Events,
+    public itemPage: ItemPage
     ) {
       // let search = new SearchPage(this.items, this.items, this.items);
       // search.items = 'items';
@@ -23,10 +26,10 @@ export class SearchPage {
  
     ionViewDidLoad() {
       // console.log("ionViewDidLoad");
-        this.setFilteredItems();
+        this.searchItems();
       }
  
-    public async setFilteredItems() {
+    public async searchItems() {
       // clear items while user types
       this.items = [];
 
@@ -35,8 +38,7 @@ export class SearchPage {
           this.restProvider.searchItems(this.searchTerm)
           .then(data => {
             this.items = data;
-            console.log("data: " , data);
-
+            // console.log("data: " , data);
           });
         
           console.log("items: " , this.items);
@@ -45,21 +47,34 @@ export class SearchPage {
 
       public showItemPage() {
         console.log("pushing item page");
-        this.navCtrl.push(ItemPage);
+        this.navCtrl.push(ItemPage, {'name': this.itemInfo[0], 'methods': this.itemInfo[1]});
       }
 
 
-      // not ready for itr 1
-      public async getItemName() {
-        console.log("sending items");
-        return await this.items;
+      // sends itemInfo (item name and item methods)
+      // to ItemPage module
+      public async getItemInfo(i: any) {
+        
+        if (this.items[i]) {
+          var name = this.items[i].item;
+          // console.log("Item name: " + name);
+
+          var methods = this.items[i].methods;
+          // console.log("Item methods :" + methods);
+
+          var itemInfo = [];
+          itemInfo.push(name);
+          itemInfo.push(methods);
+          // console.log("itemInfo: " , itemInfo);
+
+          // to send itemInfo to itemPage
+          //this.event.publish('item:clicked', itemInfo);
+
+          this.itemInfo = itemInfo;
+          
+        }
       }
-
-
-
-
-
-
+     
 
 
 

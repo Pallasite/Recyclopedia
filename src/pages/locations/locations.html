@@ -1,17 +1,45 @@
-
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Recycling Locations
-    </ion-title>
-    <ion-buttons end>
-      <button ion-button (click)="addMarker()"><ion-icon name="add"></ion-icon>Add Marker</button>
-    </ion-buttons>
+    <ion-grid>
+      <ion-row>
+        <ion-col></ion-col>
+        <ion-col>
+          <ion-title>
+            Recycling Locations
+          </ion-title>
+        </ion-col>
+        <ion-col>
+          <!-- <ion-buttons end> -->
+            <button ion-button (click)="addMarker()" round>
+              <ion-icon name="add"></ion-icon>
+              Add Marker
+            </button>
+          <!-- </ion-buttons> -->
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-navbar>
+  <ion-toolbar color="primary">
+      <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="Search for a place"></ion-searchbar>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-    <div #map id="map"></div>
-    <!----<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJqhdVe340-c7Doq9EfI-rQV4aSFtDP4g&callback=initMap" async defer></script>-->
- 
+  <div #map id="map"></div>
+  <!----<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJqhdVe340-c7Doq9EfI-rQV4aSFtDP4g&callback=initMap" async defer></script>-->
+
+  <ion-card>
+    <ion-card-content>
+      <div #directionsPanel></div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list [hidden]="autocompleteItems.length == 0">
+      <ion-item *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResult(item)">
+        {{ item.description }}
+      </ion-item>
+    </ion-list>
+  
+    <div id='map'></div>
+    
 </ion-content>

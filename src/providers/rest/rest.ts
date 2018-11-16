@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class RestProvider {
-  apiUrl = 'http://127.0.0.1:8000/'; //'http://10.141.23.242:8000';
+  apiUrl = 'http://recyclopedia.2yqbpwp3fb.us-west-2.elasticbeanstalk.com';
   constructor(public http: HttpClient) {
     console.log('Hello RestProvider Provider');
   }

@@ -8,26 +8,27 @@ $font-path: "../assets/fonts";
 // google font request possible here for dynamic font changing?
 // ( to easily test fonts and not have to download them to try them? not sure if possible)
 
-@import url('https://fonts.googleapis.com/css?family=Baumans|Monoton');
+@import url('https://fonts.googleapis.com/css?family=Fugaz+One|Source+Sans+Pro');
 
-// font-family: 'Baumans', cursive;
-// font-family: 'Monoton', cursive;
-
-$font-family-md-base: 'Baumans', cursive;
-// $toolbar-title: 'Monoton', cursive;
+$font-family-md-base: 'Source Sans Pro', sans-serif;
 
 ion-title
 {
-  font-family: 'Monoton', cursive;
+  font-family: 'Fugaz One', cursive;
   text-align: center;
-  font-size: 300%;
+  font-size: 100%;
   font-weight: bold;
 };
 
 body, h1, h2, h3, p
 {
-  color: #65ff37;
+  font-size: 100%;
+  text-align: center;
+  color: black;
 };
+
+$button-md-text-transform: none;
+
 
 // The app direction is used to include
 // rtl styles in your app. For more info, please see:
@@ -64,23 +65,41 @@ $app-direction: ltr;
 //   dark:       #222
 // );
 
-// VaporWave
+// VaporWave Theme
+// $colors: (
+//   primary:    #0CE9E9,
+//   secondary:  #544A75,
+//   danger:     #2D5170,
+//   light:      #0AE9E9,
+//   dark:       #152331
+// );
+
+// $toolbar-background: #D9007D;
+// $tabs-background: #D9007D;
+// $background-color: #544A75;
+
+
+// Recyclopedia Original Demo Theme
 $colors: (
-  primary:    #0CE9E9,
-  secondary:  #544A75,
-  danger:     #2D5170,
-  light:      #0AE9E9,
-  dark:       #152331
+  primary:    #76d040,
+  //primary:    #9ccc65,
+  secondary:  #007290,
+  danger:     red,
+  light:      white,
+  dark:       black
 );
 
-$toolbar-background: #D9007D;
-$tabs-background: #D9007D;
+$toolbar-background: #007290;
+$tabs-background: #007290;
 
-$tabs-tab-color-inactive: #05211f;
-$tabs-md-tab-color-inactive: #05211f;
+$tabs-tab-color-active: #76d040;
+$tabs-tab-color-inactive: #21051b;
+$tabs-md-tab-color-inactive: #21051b;
+
 //Why do I have to use the -md- for things? what does this evven mean?
+// Material Design, android?
 
-$background-color: #544A75;
+$background-color: #ffeecf;
 
 
 // App iOS Variables
@@ -93,16 +112,13 @@ $background-color: #544A75;
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
-
-
+  // Bottom tool bar variables
+  $tabs-md-tab-font-size: 125%;
 
 
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
-
-
-
 
 // App Theme
 // --------------------------------------------------
@@ -127,23 +143,3 @@ $background-color: #544A75;
 
  @import "roboto";
  @import "noto-sans";
-
-
-
-
-// probably delete below
-
-
-// @font-face {
-// font-family: Source Sans Pro;
-// src: url(“../assets/fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf”);
-// }
-
-// // ios
-// $font-family-ios-base: ‘Source Sans Pro’;
-
-// // android
-// $font-family-md-base: ‘Source Sans Pro’;
-
-// // windows
-// $font-family-wp-base: ‘Source Sans Pro’;

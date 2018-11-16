@@ -1,0 +1,21 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+ </ion-navbar>
+</ion-header>
+
+<form id="form" (ngSubmit)="logForm()">
+  <!--<form id="form"> -->
+      <ion-item>
+        <ion-label>Username:</ion-label>
+        <ion-input type="text" [(ngModel)]="login.title" name="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Password:</ion-label>
+        <ion-textarea [(ngModel)]="login.description" name="description"></ion-textarea>
+      </ion-item>
+      <button ion-button type="submit" block>Log in</button>
+      <button ion-button type="submit" block>Sign up</button>
+    </form>
+   

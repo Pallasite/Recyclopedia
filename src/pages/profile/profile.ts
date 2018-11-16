@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 @Component({
-  selector: 'page-scan',
-  templateUrl: 'scan.html'
+  selector: 'page-profile',
+  templateUrl: 'profile.html'
 })
-export class BarcodeScan {
+export class UserProfile {
 
   constructor(public navCtrl: NavController) {
 
