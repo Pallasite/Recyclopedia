@@ -18,14 +18,15 @@ export class LocationsPage {
      map: any;
     
   constructor(public navCtrl: NavController, public geolocation: Geolocation) {
-    
   }
     
      ionViewDidLoad(){
        this.loadMap();
        this.startNavigating();
+      
      }
     
+     
      loadMap(){
       
       this.geolocation.getCurrentPosition().then((position) => {
@@ -43,6 +44,23 @@ export class LocationsPage {
       }, (err) => {
           console.log(err);
       });
+     }
+
+
+      updateSearchResults(){
+       if (this.autocomplete.input == '') {
+         this.autocompleteItems = [];
+         return;
+       }
+       this.GoogleAutocomplete.getPlacePredictions({ input: this.autocomplete.input },
+       (predictions, status) => {
+         this.autocompleteItems = [];
+         this.zone.run(() => {
+           predictions.forEach((prediction) => {
+             this.autocompleteItems.push(prediction);
+           });
+         });
+       });
      }
 
      addInfoWindow(marker, content){
