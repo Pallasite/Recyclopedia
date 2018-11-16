@@ -81,17 +81,18 @@ $app-direction: ltr;
 
 // Recyclopedia Original Demo Theme
 $colors: (
-  primary:    #77B254,
+  primary:    #76d040,
   //primary:    #9ccc65,
-  secondary:  #00897b,
+  secondary:  #007290,
   danger:     red,
   light:      white,
   dark:       black
 );
 
-$toolbar-background: #00897b;
-$tabs-background: #00897b;
+$toolbar-background: #007290;
+$tabs-background: #007290;
 
+$tabs-tab-color-active: #76d040;
 $tabs-tab-color-inactive: #21051b;
 $tabs-tab-color-active: #77B254;
 $tabs-md-tab-color-inactive: #21051b;
@@ -112,8 +113,8 @@ $background-color: #ffeecf;
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
-
-
+  // Bottom tool bar variables
+  $tabs-md-tab-font-size: 125%;
 
 
 // App Windows Variables

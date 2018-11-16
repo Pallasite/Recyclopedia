@@ -9,6 +9,7 @@ import { RestProvider } from '../../providers/rest/rest';
   selector: 'page-login',
   templateUrl: 'login.html'
 })
+
 export class FormsPage {
   constructor(
     public navCtrl: NavController,
