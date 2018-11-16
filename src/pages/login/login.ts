@@ -3,8 +3,8 @@ import { NavController } from 'ionic-angular';
 import { HTTP } from '@ionic-native/http';
 
 @Component({
-  selector: 'page-contact',
-  templateUrl: 'contact.html'
+  selector: 'page-login',
+  templateUrl: 'login.html'
 })
 export class FormsPage {
   login = {}

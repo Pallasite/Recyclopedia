@@ -10,7 +10,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { UserProfile } from '../pages/profile/profile';
 import { Favorites } from '../pages/favorites/favorites';
 import { Geolocation } from '@ionic-native/geolocation';
-import { FormsPage } from '../pages/contact/contact';
+import { FormsPage } from '../pages/login/login';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
