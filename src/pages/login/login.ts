@@ -22,6 +22,6 @@ export class FormsPage {
     var params = {};
     var token = "Authentication: a";
     var headers = {"token":token};
-    this.loginHTTP.get(rest.apiUrl, {}, headers);
+    //  this.loginHTTP.get(rest.apiUrl, {}, headers);
   }
 }
