@@ -24,4 +24,8 @@ src/assets/imgs/.paul_robertson_dna.gif.icloud
 src/pages/home/home.html.html
 src/providers/data/
 .sourcemaps/main.js.map
+<<<<<<< HEAD
 sourcemaps/main.js.map
+=======
+*.swp
+>>>>>>> 267ec7ee3671b469751a22692df6aa0febbd8dbf

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, MenuToggle } from 'ionic-angular';
-import { FormsPage } from '../contact/contact';
+import { FormsPage } from '../login/login';
 
 @Component({
   selector: 'page-home',
@@ -20,7 +20,6 @@ export class HomePage {
          this.cards = new Array(2);
   }
   public openForm() {
-    // push contact component on stack
     console.log("forms page");
     this.navCtrl.push(FormsPage);
   // this.navCtrl.push(FormsPage, obj->adminAuthAuth=true);
