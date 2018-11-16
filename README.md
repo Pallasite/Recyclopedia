@@ -6,10 +6,11 @@ Recyclopedia is to be a platform for providing easy access to detailed informati
 
 ## Running Instructions 
 ### Frontend
-To run the Ionic front end, Node.js must be installed. Then, once Node is installed (and assuming npm was installed with it), install the Ionic framework:
+To run the Ionic front end, Node.js must be installed. Then, once Node is installed (and assuming npm was installed with it), install the Ionic framework and install Cordova:
 
 ```
 npm install -g ionic
+npm install -g cordova
 ```
 
 Once ionic is installed, change working directories into the repository root directory, and run
@@ -17,7 +18,12 @@ Once ionic is installed, change working directories into the repository root dir
 ```
 ionic serve
 ```
-To start a development server.
+To start a development server. A browser window will be launched, but unless a database is running queries will not be functional. Howerver, site navigation and various buttons will be working.
+
+If any errors occur the following may fix those errors:
+```
+npm i @ionic/app-scripts
+```
 
 ### Backend
 Coming soon...
