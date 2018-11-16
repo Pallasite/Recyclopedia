@@ -117,15 +117,15 @@ export class LocationsPage {
      
     }
 
-     addMarker(){
+     addMarker(lat, long){
  
       let marker = new google.maps.Marker({
         map: this.map,
         animation: google.maps.Animation.DROP,
-        position: this.map.getCenter()
+        position: new google.maps.LatLng(lat,long)
       });
      
-      let content = "<h4>Information!</h4>";         
+      let content = "<h4>Info on recycling location <br />Click for directions</h4>";         
      
       this.addInfoWindow(marker, content);
      
