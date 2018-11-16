@@ -2,32 +2,15 @@ recycle_backend/recycle_backend/__pycache__/*
 recycle_backend/recycle_db/__pycache__/*
 node_modules/
 www/
-/.sourcemaps/*.js.map
-
 .gitignore
 .gitignore 2
 .sourcemaps/*
-.sourcemaps/0.js.map
-.sourcemaps/1.js.map
-.sourcemaps/10.js.map
-.sourcemaps/11.js.map
-.sourcemaps/12.js.map
-.sourcemaps/2.js.map
-.sourcemaps/3.js.map
-.sourcemaps/4.js.map
-.sourcemaps/5.js.map
-.sourcemaps/6.js.map
-.sourcemaps/7.js.map
-.sourcemaps/8.js.map
-.sourcemaps/9.js.map
 plugins/
 src/assets/fonts.scss
 src/assets/imgs/.paul_robertson_dna.gif.icloud
 src/pages/home/home.html.html
 src/providers/data/
-.sourcemaps/main.js.map
-<<<<<<< HEAD
-sourcemaps/main.js.map
-=======
 *.swp
->>>>>>> 267ec7ee3671b469751a22692df6aa0febbd8dbf
+platforms/*
+package-lock.json
+config.xml
