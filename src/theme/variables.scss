@@ -38,6 +38,12 @@ $app-direction: ltr;
 
 @import "ionic.globals";
 
+// Grid layout
+.centered_row
+{
+  justify-content: center;
+}
+
 
 // Shared Variables
 // --------------------------------------------------

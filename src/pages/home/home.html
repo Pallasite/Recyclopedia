@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar >
     <ion-grid>
-      <ion-row>
+      <ion-row class="centered_row">
         <ion-col></ion-col>
         <ion-col>
           <ion-title>Home</ion-title>
@@ -28,9 +28,9 @@
       </ion-col>
     </ion-row>
 
-    <ion-row>
+    <ion-row class="centered_row">
       <!-- oof, this is not how the grids are supposed to be used, but it's hacky for now -->
-      <ion-col></ion-col>
+
       <ion-col col-12 col-lg-10 col-xl-8>
         <ion-card *ngFor="let card of cards">
 
@@ -69,23 +69,23 @@
 
         </ion-card>
       </ion-col>
-      <ion-col></ion-col>
+
     </ion-row>
 
-    <ion-row>
-      <ion-col></ion-col>
+    <ion-row class="centered_row">
+
       <ion-col col-12 col-xl-4>
         <h3>Become an Admin.</h3>
         <p>Recycling Coordinator Form Submission</p>
       </ion-col>
-      <ion-col></ion-col>
+
     </ion-row>
-    <ion-row>
-      <ion-col></ion-col>
+    <ion-row class="centered_row">
+
       <ion-col col-4 >
         <button ion-button (click)="openForm()" block>Open form</button>
       </ion-col>
-      <ion-col></ion-col>
+
     </ion-row>
   </ion-grid>
 </ion-content>
