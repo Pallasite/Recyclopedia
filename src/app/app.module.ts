@@ -15,8 +15,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
 import { ItemPage } from '../pages/itemPage/itemPage';
+import { RegisterPage } from '../pages/register/register';
+
 // Django/Rest Imports
 import { HttpClientModule } from '@angular/common/http';
+// import { HTTP } from '@ionic-native/http';
 import { RestProvider } from '../providers/rest/rest';
 
 
@@ -31,6 +34,7 @@ import { RestProvider } from '../providers/rest/rest';
     Favorites,
     FormsPage,
     ItemPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
@@ -49,11 +53,13 @@ import { RestProvider } from '../providers/rest/rest';
       Favorites,
       FormsPage,
       ItemPage,
+      RegisterPage
     ],
   providers: [
     StatusBar,
     SplashScreen,
     Geolocation,
+
 
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestProvider

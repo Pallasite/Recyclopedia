@@ -1,6 +1,6 @@
-import { Component, NgModule, ViewChild, ElementRef, NgZone } from '@angular/core';
-import { NavController, Platform } from 'ionic-angular';
-import { GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
+import { Component, ViewChild, ElementRef, NgZone } from '@angular/core';
+import { NavController } from 'ionic-angular';
+//import { GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
 
 declare var google: any;
@@ -27,9 +27,9 @@ export class LocationsPage {
     
   constructor(public navCtrl: NavController, public geolocation: Geolocation, public zone: NgZone) {
     let elem = document.createElement("div");
-    //this.GooglePlaces = new google.maps.places.PlacesService(elem);
-    //this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
-    this.autocomplete = {input: ''};
+    this.GooglePlaces = new google.maps.places.PlacesService(elem);
+    this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
+    this.autocomplete = { input: '' };
     this.autocompleteItems = [];
     this.markers = [];
     this.geocoder = new google.maps.Geocoder;
@@ -38,9 +38,7 @@ export class LocationsPage {
      ionViewDidLoad(){
        this.loadMap();
        this.startNavigating();
-      
      }
-    
      
      loadMap(){
       
@@ -60,7 +58,6 @@ export class LocationsPage {
           console.log(err);
       });
      }
-
 
      updateSearchResults(){
       if (this.autocomplete.input == '') {
@@ -120,15 +117,15 @@ export class LocationsPage {
      
     }
 
-     addMarker(){
+     addMarker(lat, long){
  
       let marker = new google.maps.Marker({
         map: this.map,
         animation: google.maps.Animation.DROP,
-        position: this.map.getCenter()
+        position: new google.maps.LatLng(lat,long)
       });
      
-      let content = "<h4>Information!</h4>";         
+      let content = "<h4>Info on recycling location <br />Click for directions</h4>";         
      
       this.addInfoWindow(marker, content);
      

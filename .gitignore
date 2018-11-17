@@ -14,3 +14,4 @@ src/providers/data/
 platforms/*
 package-lock.json
 config.xml
+*.pyc

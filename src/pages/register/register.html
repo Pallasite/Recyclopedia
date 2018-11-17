@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>Register</ion-title>
+   </ion-navbar>
+  </ion-header>
+  <br>
+  <br>
+  <br>
+  <form id="form" (ngSubmit)="logForm()">
+        <ion-item>
+          <ion-label #labels>Username:</ion-label>
+          <ion-input required type="text" placeholder="Username" [(ngModel)]="login.username" name="username"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label #labels>Password:</ion-label>
+          <ion-input required type="password" placeholder="Password" [(ngModel)]="login.password1" name="password1"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label #labels>Password:</ion-label>
+            <ion-input required type="password" placeholder="Confirm Password" [(ngModel)]="login.password2" name="password2"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label #labels>Email:</ion-label>
+            <ion-input required type="email" placeholder="Email"[(ngModel)]="login.email" name="email"></ion-input>
+        </ion-item>
+      </form>
+      <button ion-button (click)="logForm()" type="submit" block>Sign up</button>
+     
+  
