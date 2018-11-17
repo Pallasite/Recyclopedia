@@ -2,10 +2,14 @@ import pdb
 import json
 from django.test import TestCase
 from rest_framework.test import APIRequestFactory
+from rest_framework import status
 from ..models import Recyclable
 from ..serializers import RecyclableSerializer
 from .. import views
 
+# Simple Python Unit Tests
+# for Django
+#
 class RecyclableTest(TestCase):
     """ Test for basic get search item """
     def setUp(self):
@@ -24,6 +28,23 @@ class RecyclableTest(TestCase):
         with self.assertRaises(Exception):
             Recyclable.objects.create(item='bad', location='madison')
 
+    def test_empty_request(self):
+        reqfactory = APIRequestFactory()
+        req = reqfactory.get('/recycle_db/search/')
+        resp = views.recyclable_search(req, '')
+        self.assertEquals(resp.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_bad_request(self):
+        reqfactory = APIRequestFactory()
+        req = reqfactory.get('rec???34said0ajlkca;s')
+        resp = views.recyclable_search(req, '')
+        self.assertEquals(resp.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_not_found_search(self):
+        reqfactory = APIRequestFactory()
+        req = reqfactory.get('/recycle_db/search/gutters')
+        resp = views.recyclable_search(req, 'gutters')
+        self.assertEquals(resp.status_code, status.HTTP_204_NO_CONTENT)
 
     def test_serializer(self):
         deer = Recyclable.objects.get(item='deer')
