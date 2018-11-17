@@ -10,7 +10,7 @@
         </ion-col>
         <ion-col>
           <!-- <ion-buttons end> -->
-            <button ion-button (click)="addMarker()" round>
+            <button ion-button (click)="addMarkerCenter()" round>
               <ion-icon name="add"></ion-icon>
               Add Marker
             </button>
@@ -20,26 +20,23 @@
     </ion-grid>
   </ion-navbar>
   <ion-toolbar color="primary">
-      <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="Search for a place"></ion-searchbar>
-    </ion-toolbar>
+    <ion-searchbar [(ngModel)]="searchTerm" [showCancelButton]="shouldShowCancel" (ionInput)="searchItems()" placeholder="Search for item" (ionCancel)="onCancel($event)"></ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
   <div #map id="map"></div>
-  <!----<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJqhdVe340-c7Doq9EfI-rQV4aSFtDP4g&callback=initMap" async defer></script>-->
-
   <ion-card>
     <ion-card-content>
       <div #directionsPanel></div>
     </ion-card-content>
   </ion-card>
-
-  <ion-list [hidden]="autocompleteItems.length == 0">
-      <ion-item *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResult(item)">
-        {{ item.description }}
-      </ion-item>
-    </ion-list>
+  <ion-list inset>
+    <ion-item *ngFor="let item of items; let i = index" (click)="clearMarkers(); getLocationInfo(i);">
+      {{ item.item }}
+    </ion-item> 
+  </ion-list>
   
-    <div id='map'></div>
-    
+  <!---<div id='map'></div>-->
+
 </ion-content>

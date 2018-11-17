@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { HTTP } from '@ionic-native/http';
-import { RestProvider } from '../../providers/rest/rest'
+// import { HTTP } from '@ionic-native/http';
+import { RegisterPage } from '../register/register';
+import { RestProvider } from '../../providers/rest/rest';
+
 
 @Component({
   selector: 'page-login',
@@ -9,19 +11,35 @@ import { RestProvider } from '../../providers/rest/rest'
 })
 
 export class FormsPage {
+  constructor(
+    public navCtrl: NavController,
+    public restProvider: RestProvider
+    ) {
 
-  constructor(public loginHTTP : HTTP,
-  	      public rest : RestProvider  ){}
+  }
+  login = {
+    username: '',
+    password: ''
+  };
 
-  login = {}
   logForm() {
+    // console.log("this.login: " , this.login);
+    // console.log("this.login.username: " , this.login.username);
+    // console.log("this.login.password: " , this.login.password);
+    var password = this.login.password; 
+    var username = this.login.username; 
+    this.login = {'username': username, 'password': password};
 
-    console.log(this.login)
-    var username = this.login[0];
-    var pw = this.login[1];
-    var params = {};
-    var token = "Authentication: a";
-    var headers = {"token":token};
-    //  this.loginHTTP.get(rest.apiUrl, {}, headers);
+    if (this.login) {
+      this.restProvider.userLogin(this.login)
+        .then(data => {
+           var response = data;
+           console.log("response: " , response);
+        });
+  }
+ 
+  }
+  registerUser() {
+    this.navCtrl.push(RegisterPage);
   }
 }
