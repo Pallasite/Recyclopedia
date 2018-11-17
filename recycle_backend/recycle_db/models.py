@@ -2,10 +2,21 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+
+
+
+class Location(models.Model):
+    latitude = models.FloatField()
+    longitude = models.FloatField()
+    name = models.CharField(max_length=50, blank=True)
+
+
+
 class Recyclable(models.Model):
     item = models.CharField(max_length=100, blank=True, default='', primary_key = True)
     methods = models.TextField()
-
+    locations = models.ManyToManyField(Location)    
+    
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

@@ -7,12 +7,10 @@ from recycle_db.serializers import RecyclableSerializer, UserSerializer, UserPro
 from django.contrib.auth.models import User
 from rest_framework import generics
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 
 class UserDetail(generics.RetrieveUpdateAPIView):
-    authentication_classes = (SessionAuthentication, BasicAuthentication)
-    permission_classes = (IsAuthenticated,)
     def get(request, username):
         user = UserProfile.objects.all(
                         username=username).select_related('profile')
@@ -21,7 +19,7 @@ class UserDetail(generics.RetrieveUpdateAPIView):
             serializer = UserSerializer
             return response(serializer.data)
         return Response(status=status.HTTP_204_NO_CONTENT)
-        
+    """   
     def post(request):
         serializer = UserProfileSerializer(data=request.data)
         if serializer.is_valid(raise_exception=ValueError):
@@ -29,8 +27,12 @@ class UserDetail(generics.RetrieveUpdateAPIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.error_messages, 
                         status=status.HTTP_400_BAD_REQUEST)
-
-        
+    """
+"""
+@api_view(['GET'])
+@permission_classes((AllowAny,))
+def search_location(request, item):
+"""
 
 
 
@@ -48,12 +50,14 @@ def recyclable_list(request):
             return Response(serializer.data, status=status.HTTP_201_Created)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 @api_view(['GET'])
+@permission_classes((AllowAny,))
 def recyclable_search(request, search):
     recyclable_search = Recyclable.objects.filter(
                     item__icontains=search)[:50]
     
-    #spilt qry to see if any words starte with search
+    #spilt qry to see if any words start with search
     filtered_search = []
     for qry in recyclable_search:
         split_arr = qry.item.split()
@@ -67,7 +71,7 @@ def recyclable_search(request, search):
     return Response(serializer.data)
 
 
-class recyclable_detail(generics.RetrieveUpdateDestroyAPIView):
+class RecyclableDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Recyclable.objects.all()
     serializer_class = RecyclableSerializer
 
