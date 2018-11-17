@@ -1,11 +1,16 @@
+# -*- coding: cp1252 -*-
 import pdb
 import json
 from django.test import TestCase
 from rest_framework.test import APIRequestFactory
+from rest_framework import status
 from ..models import Recyclable
 from ..serializers import RecyclableSerializer
 from .. import views
 
+# Simple Python Unit Tests
+# for Django
+#
 class RecyclableTest(TestCase):
     """ Test for basic get search item """
     def setUp(self):
@@ -24,6 +29,33 @@ class RecyclableTest(TestCase):
         with self.assertRaises(Exception):
             Recyclable.objects.create(item='bad', location='madison')
 
+    def test_empty_request(self):
+        reqfactory = APIRequestFactory()
+        req = reqfactory.get('/recycle_db/search/')
+        resp = views.recyclable_search(req, '')
+        resp.render()
+        self.assertNotEquals(resp.content, "[{}]")
+        self.assertEquals(resp.status_code, 200)
+
+    def test_special_chars(self):
+        reqfactory = APIRequestFactory()
+        req = reqfactory.get('')
+        resp = views.recyclable_search(req, '??&&&||\\;!@#!#)_!%@(*')
+        resp.render()
+        print(resp.content)
+        self.assertEquals(resp.status_code, status.HTTP_204_NO_CONTENT)
+
+    def test_non_exist_item_detail(self):
+        reqfactory = APIRequestFactory()
+        req = reqfactory.get('/recycle_db/search/composedwheatthins')
+        resp = views.recyclable_detail(req, 'compostedwheatthins')
+        self.assertEquals(resp.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_not_found_search(self):
+        reqfactory = APIRequestFactory()
+        req = reqfactory.get('/recycle_db/search/gutters')
+        resp = views.recyclable_search(req, 'gutters')
+        self.assertEquals(resp.status_code, status.HTTP_204_NO_CONTENT)
 
     def test_serializer(self):
         deer = Recyclable.objects.get(item='deer')
