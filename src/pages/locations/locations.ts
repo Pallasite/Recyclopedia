@@ -15,7 +15,7 @@ declare var google: any;
 })
 
 export class LocationsPage {
- 
+
   @ViewChild('map') mapElement: ElementRef;
   @ViewChild('directionsPanel') directionsPanel: ElementRef;
   map: any;
@@ -72,24 +72,27 @@ export class LocationsPage {
       this.locations = [];
       // search connection with our REST provider
         if (this.searchTerm) {
+          console.log("searchterm: " + this.searchTerm);
           this.restProvider.searchItems(this.searchTerm)
           .then(data => {
             this.locations = data;
-            // console.log("data: " , data);
+            console.log("data: " , data);
+
           });
         
-          console.log("items: " , this.locations);
         } 
       }
 
       public async getLocationInfo(i: any) {
         if (this.locations[i]) {
+          console.log("location: " , this.locations[i]);
           this.locations = this.locations[i].locations;
         }
         console.log("adding markers to map");
         // for every stored location for a given item, add a marker to the map
-        for(var j = 0; i < this.locations.length; i++) {
-            this.addMarker(this.locations[i].lat, this.locations[i].long, this.locations[i].name);
+        for(var j = 0; j < this.locations.length; j++) {
+          console.log(this.locations[j]);
+          this.addMarker(this.locations[j].latitude, this.locations[j].longitude, this.locations[j].name);
         }
       }
 
@@ -148,10 +151,11 @@ export class LocationsPage {
     
      addMarker(lat, long, name){
       // clears old markers from map
+      console.log("lat long: " + +lat + typeof(long));
       let marker = new google.maps.Marker({
         map: this.map,
         animation: google.maps.Animation.DROP,
-        position: new google.maps.LatLng(lat,long)
+        position: new google.maps.LatLng(+lat, +long)
       });
      
       let content = name;         

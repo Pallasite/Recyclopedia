@@ -21,7 +21,7 @@ export class FormsPage {
 
   }
   response = {
-    "token": '',
+    token: '',
     user: {
       "email": String,
       "first_name": String, 
@@ -46,7 +46,7 @@ export class FormsPage {
         .then(data => {
           var response = data;
           console.log("data: " , data);
-          this.global.token = response.token;
+          this.global.token = this.response.token;
            console.log("Token updated: " , this.global.token);
            var user = this.response.user;
 

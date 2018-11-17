@@ -1,5 +1,36 @@
 <ion-header>
+    <ion-navbar>
+      <ion-title center>
+        Recycling Locations
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+    
+  <ion-content>
+      <ion-toolbar color="primary">
+          <ion-searchbar
+          [(ngModel)]="searchTerm"
+          [showCancelButton]="shouldShowCancel"
+          (ionInput)="searchItems()"
+          (ionCancel)="onCancel($event)">
+        </ion-searchbar>
+      </ion-toolbar> 
+      <ion-list inset style="z-index: 3000;">
+          <ion-item *ngFor="let location of locations; let i = index" (click)="clearMarkers(); getLocationInfo(i);">
+            {{ location.item }}
+          </ion-item> 
+        </ion-list>
+    
+
+    
+    
+    
+<!--     
+    
+    <ion-header>
   <ion-navbar>
+      <ion-toolbar>
+
     <ion-grid>
       <ion-row>
         <ion-col></ion-col>
@@ -9,34 +40,70 @@
           </ion-title>
         </ion-col>
         <ion-col>
-          <!-- <ion-buttons end> -->
+          <ion-buttons end>
             <button ion-button (click)="addMarkerCenter()" round>
               <ion-icon name="add"></ion-icon>
               Add Marker
             </button>
-          <!-- </ion-buttons> -->
+          </ion-buttons>
         </ion-col>
       </ion-row>
-    </ion-grid>
-  </ion-navbar>
-  <ion-toolbar color="primary">
-    <ion-searchbar [(ngModel)]="searchTerm" [showCancelButton]="shouldShowCancel" (ionInput)="searchItems()" placeholder="Search for item" (ionCancel)="onCancel($event)"></ion-searchbar>
-  </ion-toolbar>
-</ion-header>
+    </ion-grid> -->
+  <!-- </ion-navbar> -->
+  <!-- <ion-toolbar color="primary">
+    <ion-searchbar [(ngModel)]="searchTerm"
+     [showCancelButton]="shouldShowCancel" 
+     (ionInput)="searchItems()" 
+     placeholder="Search for item" 
+     (ionCancel)="onCancel($event)"></ion-searchbar>
+  </ion-toolbar> -->
 
-<ion-content padding>
+
+<!--  
+  <ion-searchbar
+    [(ngModel)]="searchTerm"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="searchItems()"
+    (ionCancel)="onCancel($event)">
+  </ion-searchbar> -->
+
+
+<!-- </ion-toolbar> -->
+
+<!-- </ion-navbar>
+</ion-header>
+<ion-list inset style="z-index: 3000;">
+  <ion-item *ngFor="let location of locations; let i = index" (click)="clearMarkers(); getLocationInfo(i);">
+    {{ location.item }}
+  </ion-item> 
+</ion-list> -->
+
+
+
   <div #map id="map"></div>
   <ion-card>
     <ion-card-content>
       <div #directionsPanel></div>
     </ion-card-content>
   </ion-card>
-  <ion-list inset>
-    <ion-item *ngFor="let item of items; let i = index" (click)="clearMarkers(); getLocationInfo(i);">
-      {{ item.item }}
-    </ion-item> 
-  </ion-list>
+  
+   
   
   <!---<div id='map'></div>-->
 
 </ion-content>
+<!-- <ion-content>
+<ion-toolbar color="primary">
+  <ion-searchbar
+    [(ngModel)]="searchTerm"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="searchItems()"
+    (ionCancel)="onCancel($event)">
+  </ion-searchbar>
+</ion-toolbar> 
+<ion-list inset>
+  <ion-item *ngFor="let location of locations; let i = index" (click)="clearMarkers(); getLocationInfo(i);">
+    {{ location.location }}
+  </ion-item> 
+</ion-list>
+</ion-content> -->
