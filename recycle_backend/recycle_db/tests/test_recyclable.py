@@ -1,3 +1,4 @@
+# -*- coding: cp1252 -*-
 import pdb
 import json
 from django.test import TestCase
@@ -33,15 +34,16 @@ class RecyclableTest(TestCase):
         req = reqfactory.get('/recycle_db/search/')
         resp = views.recyclable_search(req, '')
         resp.render()
-        print(resp.content)
         self.assertNotEquals(resp.content, "[{}]")
         self.assertEquals(resp.status_code, 200)
 
-    def test_bad_request(self):
+    def test_special_chars(self):
         reqfactory = APIRequestFactory()
-        req = reqfactory.get('rec???34said0ajlkca;s')
-        resp = views.recyclable_search(req, '')
-        self.assertEquals(resp.status_code, status.HTTP_400_BAD_REQUEST)
+        req = reqfactory.get('')
+        resp = views.recyclable_search(req, '??&&&||\\;!@#!#)_!%@(*')
+        resp.render()
+        print(resp.content)
+        self.assertEquals(resp.status_code, status.HTTP_204_NO_CONTENT)
 
     def test_non_exist_item_detail(self):
         reqfactory = APIRequestFactory()
