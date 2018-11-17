@@ -119,10 +119,10 @@ export class LocationsPage {
       let infoWindow = new google.maps.InfoWindow({
         content: content
       });
-     
-      google.maps.event.addListener(marker, 'click', () => {
-        infoWindow.open(this.map, marker);
-      });
+      infoWindow.open(this.map, marker);
+      // google.maps.event.addListener(marker, 'click', () => {
+      //   infoWindow.open(this.map, marker);
+      // });
      
     }
     clearMarkers(){
