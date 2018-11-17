@@ -1,0 +1,18 @@
+recycle_backend/recycle_backend/__pycache__/*
+recycle_backend/recycle_db/__pycache__/*
+node_modules/
+www/
+.gitignore
+.gitignore 2
+.sourcemaps/*
+plugins/
+src/assets/fonts.scss
+src/assets/imgs/.paul_robertson_dna.gif.icloud
+src/pages/home/home.html.html
+src/providers/data/
+*.swp
+platforms/*
+package-lock.json
+config.xml
+*.pyc
+.coverage

@@ -1,7 +1,10 @@
 import { Component, ViewChild, ElementRef, NgZone } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams, Events } from 'ionic-angular';
 //import { GoogleMaps, GoogleMap } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
+// from search
+import { RestProvider } from '../../providers/rest/rest';
+//import { ItemPage } from '../itemPage/itemPage';
 
 declare var google: any;
 
@@ -16,28 +19,32 @@ export class LocationsPage {
   @ViewChild('map') mapElement: ElementRef;
   @ViewChild('directionsPanel') directionsPanel: ElementRef;
   map: any;
-
   markers: any;
-  autocomplete: any;
-  GoogleAutocomplete: any;
-  GooglePlaces: any;
   geocoder: any
-  autocompleteItems: any;
   //loading: any;
+  // these are from search module
+  searchTerm: string = '';
+  public locations: any = [];
+  // this is for marker windows
+  infoWindow: any;
     
-  constructor(public navCtrl: NavController, public geolocation: Geolocation, public zone: NgZone) {
+  constructor(public navCtrl: NavController, public geolocation: Geolocation, public zone: NgZone, public restProvider: RestProvider, public navParams: NavParams, public event: Events) {
     let elem = document.createElement("div");
-    this.GooglePlaces = new google.maps.places.PlacesService(elem);
-    this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
-    this.autocomplete = { input: '' };
-    this.autocompleteItems = [];
+    //this.GooglePlaces = new google.maps.places.PlacesService(elem);
+    //this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
+    //this.autocomplete = { input: '' };
+    //this.autocompleteItems = [];
     this.markers = [];
     this.geocoder = new google.maps.Geocoder;
+    this.locations = [];
+    this.infoWindow;
+    // from search
+    
   }
     
      ionViewDidLoad(){
        this.loadMap();
-       this.startNavigating();
+       //this.startNavigating();
      }
      
      loadMap(){
@@ -59,52 +66,51 @@ export class LocationsPage {
       });
      }
 
-     updateSearchResults(){
-      if (this.autocomplete.input == '') {
-        this.autocompleteItems = [];
-        return;
-      }
-      this.GoogleAutocomplete.getPlacePredictions({ input: this.autocomplete.input },
-        (predictions, status) => {
-          this.autocompleteItems = [];
-          if(predictions){
-            this.zone.run(() => {
-              predictions.forEach((prediction) => {
-                this.autocompleteItems.push(prediction);
-              });
-            });
-          }
-      });
-    }
-
-    selectSearchResult(item){
-      this.clearMarkers();
-      this.autocompleteItems = [];
-  
-      this.geocoder.geocode({'placeId': item.place_id}, (results, status) => {
-        if(status === 'OK' && results[0]){
-          // let position = {
-          //     lat: results[0].geometry.location.lat,
-          //     lng: results[0].geometry.location.lng
-          // };
-          let marker = new google.maps.Marker({
-            position: results[0].geometry.location,
-            map: this.map
+     // these 2 methods are from search
+     public async searchItems() {
+      // clear locations while user types
+      this.locations = [];
+      // search connection with our REST provider
+        if (this.searchTerm) {
+          this.restProvider.searchItems(this.searchTerm)
+          .then(data => {
+            this.locations = data;
+            // console.log("data: " , data);
           });
-          this.markers.push(marker);
-          this.map.setCenter(results[0].geometry.location);
-        }
-      })
-    }
-
-    clearMarkers(){
-      for (var i = 0; i < this.markers.length; i++) {
-        console.log(this.markers[i])
-        this.markers[i].setMap(null);
+        
+          console.log("items: " , this.locations);
+        } 
       }
-      this.markers = [];
-    }
 
+      public async getLocationInfo(i: any) {
+        if (this.locations[i]) {
+          this.locations = this.locations[i].locations;
+        }
+        console.log("adding markers to map");
+        // for every stored location for a given item, add a marker to the map
+        for(var j = 0; i < this.locations.length; i++) {
+            this.addMarker(this.locations[i].lat, this.locations[i].long, this.locations[i].name);
+        }
+      }
+
+      closeAllInfoWindows() {
+        for(let window of this.infoWindow) {
+          window.close();
+        }
+      }
+      /*
+      addInfoWindowToMarker(marker) {
+        var infoWindowContent = '<div id="content"><h1 id="firstHeading" class="firstHeading">' + marker.title + '</h1></div>';
+        var infoWindow = new google.maps.InfoWindow({
+          content: infoWindowContent
+        });
+        marker.addListener('click', () => {
+          this.closeAllInfoWindows();
+          infoWindow.open(this.map, marker);
+        });
+        this.infoWindow.push(infoWindow);
+      }
+      */
      addInfoWindow(marker, content){
  
       let infoWindow = new google.maps.InfoWindow({
@@ -116,21 +122,45 @@ export class LocationsPage {
       });
      
     }
+    clearMarkers(){
+      for (var i = 0; i < this.markers.length; i++) {
+        console.log(this.markers[i])
+        this.markers[i].setMap(null);
+      }
+      this.markers = [];
+    }
 
-     addMarker(){
- 
+    addMarkerCenter(){
+      // if admin user wants to add locations (will be developed in iteration 3) for now just adds marker to center of map on screen
       let marker = new google.maps.Marker({
         map: this.map,
         animation: google.maps.Animation.DROP,
-        position: this.map.getCenter()
+        position: this.map.getCenter(),
+        infoClick: function(a) {
+          this.startNavigating();
+        }
       });
      
       let content = "<h4>Information!</h4>";         
+      this.addInfoWindow(marker, content);
+     
+    }
+    
+     addMarker(lat, long, name){
+      // clears old markers from map
+      let marker = new google.maps.Marker({
+        map: this.map,
+        animation: google.maps.Animation.DROP,
+        position: new google.maps.LatLng(lat,long)
+      });
+     
+      let content = name;         
      
       this.addInfoWindow(marker, content);
      
     }
 
+    
     startNavigating(){
  
       let directionsService = new google.maps.DirectionsService;
