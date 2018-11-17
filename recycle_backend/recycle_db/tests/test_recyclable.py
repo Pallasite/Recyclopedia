@@ -5,7 +5,9 @@ from django.test import TestCase
 from rest_framework.test import APIRequestFactory
 from rest_framework import status
 from ..models import Recyclable
+from ..models import UserProfile
 from ..serializers import RecyclableSerializer
+from ..serializers import UserProfileSerializer
 from .. import views
 
 # Simple Python Unit Tests
@@ -41,15 +43,12 @@ class RecyclableTest(TestCase):
         reqfactory = APIRequestFactory()
         req = reqfactory.get('')
         resp = views.recyclable_search(req, '??&&&||\\;!@#!#)_!%@(*')
-        resp.render()
-        print(resp.content)
         self.assertEquals(resp.status_code, status.HTTP_204_NO_CONTENT)
 
-    def test_non_exist_item_detail(self):
-        reqfactory = APIRequestFactory()
-        req = reqfactory.get('/recycle_db/search/composedwheatthins')
-        resp = views.recyclable_detail(req, 'compostedwheatthins')
-        self.assertEquals(resp.status_code, status.HTTP_404_NOT_FOUND)
+    def test_user_profile_serializer_blank_user(self):
+        upt = UserProfile()
+        serialize = UserProfileSerializer(upt)
+        self.assertNotEquals(serialize.data, None);
 
     def test_not_found_search(self):
         reqfactory = APIRequestFactory()
