@@ -12,7 +12,7 @@ $font-path: "../assets/fonts";
 
 $font-family-md-base: 'Source Sans Pro', sans-serif;
 
-ion-title
+ion-title, h1, h2
 {
   font-family: 'Fugaz One', cursive;
   text-align: center;
@@ -20,7 +20,7 @@ ion-title
   font-weight: bold;
 };
 
-body, h1, h2, h3, p
+body, h3, p
 {
   font-size: 100%;
   text-align: center;
