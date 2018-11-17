@@ -1,4 +1,5 @@
 # Recyclopedia - Saving the World™
+#####
 [![Coverage Status](https://coveralls.io/repos/github/Pallasite/Recyclopedia/badge.svg?branch=Iteration-2-Dev)](https://coveralls.io/github/Pallasite/Recyclopedia?branch=Iteration-2-Dev)
 *a Software Engineering CS506 - Group Project*	
 ## Description
