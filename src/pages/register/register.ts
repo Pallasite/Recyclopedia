@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 // import { HTTP } from '@ionic-native/http';
 import { RestProvider } from '../../providers/rest/rest';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { global } from '@angular/core/src/util';
 
 
 @Component({

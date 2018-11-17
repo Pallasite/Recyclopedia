@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-// import { HTTP } from '@ionic-native/http';
 import { RegisterPage } from '../register/register';
 import { RestProvider } from '../../providers/rest/rest';
+import { GlobalService} from '../global/global.service';
+// import { HttpHeaders } from '@angular/common/http';
+
 
 
 @Component({
@@ -13,19 +15,28 @@ import { RestProvider } from '../../providers/rest/rest';
 export class FormsPage {
   constructor(
     public navCtrl: NavController,
-    public restProvider: RestProvider
+    public restProvider: RestProvider,
+    public global: GlobalService
     ) {
 
   }
+  response = {
+    token: '',
+    user: {
+      "email": String,
+      "first_name": String, 
+      "last_name": String, 
+      "pk": Number, 
+      "username": String
+    }
+  }
+  
   login = {
     username: '',
     password: ''
   };
 
-  logForm() {
-    // console.log("this.login: " , this.login);
-    // console.log("this.login.username: " , this.login.username);
-    // console.log("this.login.password: " , this.login.password);
+  public async logForm() {
     var password = this.login.password; 
     var username = this.login.username; 
     this.login = {'username': username, 'password': password};
@@ -33,7 +44,13 @@ export class FormsPage {
     if (this.login) {
       this.restProvider.userLogin(this.login)
         .then(data => {
-           var response = data;
+          var response = data;
+          console.log("data: " , data);
+          this.global.token = response.token;
+           console.log("Token updated: " , this.global.token);
+           var user = this.response.user;
+
+           console.log("user: " , user);
            console.log("response: " , response);
         });
   }

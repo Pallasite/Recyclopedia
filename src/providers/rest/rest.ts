@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { GlobalService } from '../../pages/global/global.service';
 
  
 /*
@@ -10,8 +11,11 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class RestProvider {
-  apiUrl = 'http://10.140.145.247:8000';
-  constructor(public http: HttpClient) {
+  apiUrl = 'http://192.168.1.2:8000';
+  constructor(
+    public http: HttpClient,
+    public global: GlobalService,
+  ) {
     console.log('Hello RestProvider Provider');
   }
 
@@ -47,4 +51,25 @@ export class RestProvider {
       })
     })
   }
+
+  public async adminSubmission(info: any) {
+    console.log("Form being submitted..");
+
+
+      var httpOptions = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': "JWT " + this.global.token
+      
+    }
+  }
+    console.log("httpOpts: " , httpOptions);
+    return new Promise(resolve => {
+      this.http.post(this.apiUrl + '/recycle_db/', info, httpOptions).subscribe(data => {
+        resolve(data);
+        })
+    })
+  
+}
+
 }

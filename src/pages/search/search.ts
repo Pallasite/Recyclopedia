@@ -62,7 +62,7 @@ export class SearchPage {
           var itemInfo = [];
           itemInfo.push(name);
           itemInfo.push(methods);
-          // console.log("itemInfo: " , itemInfo);
+          console.log("itemInfo: " , itemInfo);
 
           // to send itemInfo to itemPage
           //this.event.publish('item:clicked', itemInfo);
