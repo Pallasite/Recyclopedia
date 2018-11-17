@@ -32,6 +32,9 @@ class RecyclableTest(TestCase):
         reqfactory = APIRequestFactory()
         req = reqfactory.get('/recycle_db/search/')
         resp = views.recyclable_search(req, '')
+        resp.render()
+        print(resp.content)
+        self.assertEquals(resp.content, "")
         self.assertEquals(resp.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_bad_request(self):
@@ -39,6 +42,12 @@ class RecyclableTest(TestCase):
         req = reqfactory.get('rec???34said0ajlkca;s')
         resp = views.recyclable_search(req, '')
         self.assertEquals(resp.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_non_exist_item_detail(self):
+        reqfactory = APIRequestFactory()
+        req = reqfactory.get('/recycle_db/search/composedwheatthins')
+        resp = views.recyclable_detail(req, 'compostedwheatthins')
+        self.assertEquals(resp.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_not_found_search(self):
         reqfactory = APIRequestFactory()
