@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'recycle_db.apps.RecycleDbConfig',
-    'rest_framework.authtoken',
+    #'rest_framework.authtoken',
     'rest_auth',
     'django.contrib.sites',
     'allauth',

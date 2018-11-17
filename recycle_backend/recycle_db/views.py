@@ -6,9 +6,8 @@ from recycle_db.models import Recyclable, UserProfile
 from recycle_db.serializers import RecyclableSerializer, UserSerializer, UserProfileSerializer
 from django.contrib.auth.models import User
 from rest_framework import generics
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication
-from rest_framework.permissions import IsAuthenticated, AllowAny
-
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
+from recycle_db.permissions import IsTrustedOrReadOnly
 
 class UserDetail(generics.RetrieveUpdateAPIView):
     def get(request, username):
@@ -35,21 +34,22 @@ def search_location(request, item):
 """
 
 
-
-@api_view(['GET', 'POST'])
-def recyclable_list(request):
+class RecyclableList(generics.ListCreateAPIView):
+    queryset = Recyclable.objects.all()
+    serializer_class = RecyclableSerializer
+    permission_classes = (IsTrustedOrReadOnly, IsAuthenticatedOrReadOnly)
+    """ 
     if request.method == 'GET':
         recyclable = Recyclable.objects.all()
         serializer = RecyclableSerializer(recyclable, many=True)
         return Response(serializer.data)
-
-    elif request.method == 'POST':
+    
         serializer = RecyclableSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_Created)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+    """
 
 @api_view(['GET'])
 @permission_classes((AllowAny,))
@@ -74,4 +74,4 @@ def recyclable_search(request, search):
 class RecyclableDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Recyclable.objects.all()
     serializer_class = RecyclableSerializer
-
+    
