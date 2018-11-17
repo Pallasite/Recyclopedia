@@ -19,21 +19,14 @@ export class LocationsPage {
   @ViewChild('map') mapElement: ElementRef;
   @ViewChild('directionsPanel') directionsPanel: ElementRef;
   map: any;
-
   markers: any;
-  //autocomplete: any;
-  //GoogleAutocomplete: any;
-  //GooglePlaces: any;
   geocoder: any
-  //autocompleteItems: any;
   //loading: any;
-
   // these are from search module
-  //public items: any = [];
   searchTerm: string = '';
-  //public itemInfo: any;
   public locations: any = [];
-  //public locationsInfo: any;
+  // this is for marker windows
+  infoWindow: any;
     
   constructor(public navCtrl: NavController, public geolocation: Geolocation, public zone: NgZone, public restProvider: RestProvider, public navParams: NavParams, public event: Events) {
     let elem = document.createElement("div");
@@ -44,12 +37,14 @@ export class LocationsPage {
     this.markers = [];
     this.geocoder = new google.maps.Geocoder;
     this.locations = [];
+    this.infoWindow;
     // from search
+    
   }
     
      ionViewDidLoad(){
        this.loadMap();
-       this.startNavigating();
+       //this.startNavigating();
      }
      
      loadMap(){
@@ -70,11 +65,11 @@ export class LocationsPage {
           console.log(err);
       });
      }
+
      // these 2 methods are from search
      public async searchItems() {
       // clear locations while user types
       this.locations = [];
-
       // search connection with our REST provider
         if (this.searchTerm) {
           this.restProvider.searchItems(this.searchTerm)
@@ -98,14 +93,24 @@ export class LocationsPage {
         }
       }
 
-    clearMarkers(){
-      for (var i = 0; i < this.markers.length; i++) {
-        console.log(this.markers[i])
-        this.markers[i].setMap(null);
+      closeAllInfoWindows() {
+        for(let window of this.infoWindow) {
+          window.close();
+        }
       }
-      this.markers = [];
-    }
-
+      /*
+      addInfoWindowToMarker(marker) {
+        var infoWindowContent = '<div id="content"><h1 id="firstHeading" class="firstHeading">' + marker.title + '</h1></div>';
+        var infoWindow = new google.maps.InfoWindow({
+          content: infoWindowContent
+        });
+        marker.addListener('click', () => {
+          this.closeAllInfoWindows();
+          infoWindow.open(this.map, marker);
+        });
+        this.infoWindow.push(infoWindow);
+      }
+      */
      addInfoWindow(marker, content){
  
       let infoWindow = new google.maps.InfoWindow({
@@ -117,16 +122,26 @@ export class LocationsPage {
       });
      
     }
+    clearMarkers(){
+      for (var i = 0; i < this.markers.length; i++) {
+        console.log(this.markers[i])
+        this.markers[i].setMap(null);
+      }
+      this.markers = [];
+    }
+
     addMarkerCenter(){
       // if admin user wants to add locations (will be developed in iteration 3) for now just adds marker to center of map on screen
       let marker = new google.maps.Marker({
         map: this.map,
         animation: google.maps.Animation.DROP,
-        position: this.map.getCenter()
+        position: this.map.getCenter(),
+        infoClick: function(a) {
+          this.startNavigating();
+        }
       });
      
       let content = "<h4>Information!</h4>";         
-     
       this.addInfoWindow(marker, content);
      
     }
@@ -145,6 +160,7 @@ export class LocationsPage {
      
     }
 
+    
     startNavigating(){
  
       let directionsService = new google.maps.DirectionsService;
