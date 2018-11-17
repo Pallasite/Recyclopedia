@@ -34,8 +34,8 @@ class RecyclableTest(TestCase):
         resp = views.recyclable_search(req, '')
         resp.render()
         print(resp.content)
-        self.assertEquals(resp.content, "")
-        self.assertEquals(resp.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertNotEquals(resp.content, "[{}]")
+        self.assertEquals(resp.status_code, 200)
 
     def test_bad_request(self):
         reqfactory = APIRequestFactory()
