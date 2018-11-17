@@ -19,65 +19,73 @@
 </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+  <ion-grid fixed>
 
-  <p style="margin-left: 20px"></p>
-  <h3>News Feed</h3>
-  <p style="margin-left: 20px">padding-right: 5px</p>
-  <!---
-  <ion-segment [(ngModel)]="category">
-  <ion-segment-button value="gear">
-  Events
-</ion-segment-button>
-<ion-segment-button value="clothing">
-News
-</ion-segment-button>
-<ion-segment-button value="nutrition">
-Nutrition
-</ion-segment-button>
-</ion-segment>
---->
+    <ion-row>
+      <ion-col>
+        <!-- <h1>News Feed</h1> -->
+      </ion-col>
+    </ion-row>
 
-<ion-card *ngFor="let card of cards">
+    <ion-row>
+      <!-- oof, this is not how the grids are supposed to be used, but it's hacky for now -->
+      <ion-col col-1 col-md-1 col-lg-1 col-xl-2></ion-col>
+      <ion-col>
+        <ion-card *ngFor="let card of cards">
 
-      <ion-item>
-        <ion-avatar item-left>
-          <img src= "assets/imgs/logo.png" />
-        </ion-avatar>
-        <h2 style="margin-right: 58px;">Events/News</h2>
-      </ion-item>
+          <ion-item>
+            <ion-avatar item-left>
+              <img src= "assets/imgs/logo.png" />
+            </ion-avatar>
+            <h2>A News</h2>
+          </ion-item>
 
-  <img src= "https://www.waste360.com/sites/waste360.com/files/styles/article_featured_retina/public/recycling%20bins%20recyclables%20flying%20above-ts-680657646-1540.jpg?itok=oxrIRJY9" />
+          <img src= "https://www.waste360.com/sites/waste360.com/files/styles/article_featured_retina/public/recycling%20bins%20recyclables%20flying%20above-ts-680657646-1540.jpg?itok=oxrIRJY9" />
 
-  <ion-card-content>
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-  </ion-card-content>
+          <ion-card-content>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+          </ion-card-content>
 
-  <ion-row>
-    <ion-col>
-      <button ion-button icon-left clear small>
-        <ion-icon name="thumbs-up"></ion-icon>
-        <div>12 Likes</div>
-      </button>
-    </ion-col>
-    <ion-col>
-      <button ion-button icon-left clear small>
-        <ion-icon name="text"></ion-icon>
-        <div>4 Comments</div>
-      </button>
-    </ion-col>
-    <ion-col center text-center>
-      <ion-note>
-        11h ago
-      </ion-note>
-    </ion-col>
-  </ion-row>
+          <ion-row>
+            <ion-col>
+              <button ion-button icon-left clear small>
+                <ion-icon name="thumbs-up"></ion-icon>
+                <div>12 Likes</div>
+              </button>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-left clear small>
+                <ion-icon name="text"></ion-icon>
+                <div>4 Comments</div>
+              </button>
+            </ion-col>
+            <ion-col center text-center>
+              <ion-note>
+                11h ago
+              </ion-note>
+            </ion-col>
+          </ion-row>
 
-</ion-card>
+        </ion-card>
+      </ion-col>
+      <ion-col col-1 col-md-1 col-lg-1 col-xl-2></ion-col>
+    </ion-row>
 
-<br>
-<h3>Become an Admin.</h3>
-<p>Recycling Coordinator Form Submission</p>
-<button ion-button (click)="openForm()" block>Open form</button>
-
+    <ion-row>
+      <ion-col col-1 col-md-1 col-lg-1 col-xl-2></ion-col>
+      <ion-col>
+        <h3>Become an Admin.</h3>
+        <p>Recycling Coordinator Form Submission</p>
+      </ion-col>
+      <ion-col col-1 col-md-1 col-lg-1 col-xl-2></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col col-3 >
+        <button ion-button (click)="openForm()" block>Open form</button>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
