@@ -21,7 +21,7 @@ export class FormsPage {
 
   }
   response = {
-    token: '',
+    "token": '',
     user: {
       "email": String,
       "first_name": String, 
