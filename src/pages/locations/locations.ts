@@ -7,6 +7,7 @@ import { RestProvider } from '../../providers/rest/rest';
 //import { ItemPage } from '../itemPage/itemPage';
 
 declare var google: any;
+var infoWindow = null;
 
 @Component({
   selector: 'page-locations',
@@ -15,7 +16,7 @@ declare var google: any;
 })
 
 export class LocationsPage {
-
+ 
   @ViewChild('map') mapElement: ElementRef;
   @ViewChild('directionsPanel') directionsPanel: ElementRef;
   map: any;
@@ -50,9 +51,9 @@ export class LocationsPage {
      loadMap(){
       
       this.geolocation.getCurrentPosition().then((position) => {
-    
+        
        let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    
+
        let mapOptions = {
          center: latLng,
          zoom: 15,
@@ -60,7 +61,7 @@ export class LocationsPage {
        }
     
        this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-    
+
       }, (err) => {
           console.log(err);
       });
@@ -80,6 +81,7 @@ export class LocationsPage {
 
           });
         
+          console.log("items: " , this.locations);
         } 
       }
 
@@ -95,13 +97,8 @@ export class LocationsPage {
           this.addMarker(this.locations[j].latitude, this.locations[j].longitude, this.locations[j].name);
         }
       }
-
-      closeAllInfoWindows() {
-        for(let window of this.infoWindow) {
-          window.close();
-        }
-      }
       /*
+
       addInfoWindowToMarker(marker) {
         var infoWindowContent = '<div id="content"><h1 id="firstHeading" class="firstHeading">' + marker.title + '</h1></div>';
         var infoWindow = new google.maps.InfoWindow({
@@ -116,15 +113,21 @@ export class LocationsPage {
       */
      addInfoWindow(marker, content){
  
-      let infoWindow = new google.maps.InfoWindow({
+      infoWindow = new google.maps.InfoWindow({
         content: content
       });
-      infoWindow.open(this.map, marker);
-      // google.maps.event.addListener(marker, 'click', () => {
-      //   infoWindow.open(this.map, marker);
-      // });
+
+     
+      google.maps.event.addListener(marker, 'click', () => {
+        if (infoWindow) {
+          infoWindow.close();
+      }
+        infoWindow.open(this.map, marker);
+      });
      
     }
+
+    // clears the markers from the map and then clears the marker array
     clearMarkers(){
       for (var i = 0; i < this.markers.length; i++) {
         console.log(this.markers[i])
@@ -139,12 +142,14 @@ export class LocationsPage {
         map: this.map,
         animation: google.maps.Animation.DROP,
         position: this.map.getCenter(),
+        draggable: true,
         infoClick: function(a) {
           this.startNavigating();
         }
       });
      
-      let content = "<h4>Information!</h4>";         
+      let content = String(this.markers.length+1);
+      this.markers.push(marker);       
       this.addInfoWindow(marker, content);
      
     }
@@ -155,7 +160,8 @@ export class LocationsPage {
       let marker = new google.maps.Marker({
         map: this.map,
         animation: google.maps.Animation.DROP,
-        position: new google.maps.LatLng(+lat, +long)
+        // this was +lat, +long WHY?
+        position: new google.maps.LatLng(lat,long)
       });
      
       let content = name;         
@@ -163,6 +169,16 @@ export class LocationsPage {
       this.addInfoWindow(marker, content);
      
     }
+
+    // future styling of map search feature, will drop pins in sequential order
+    /*
+    function drop() {
+      for (var i =0; i < markerArray.length; i++) {
+        setTimeout(function() {
+          addMarkerMethod();
+        }, i * 200);
+      }
+    }*/
 
     
     startNavigating(){
