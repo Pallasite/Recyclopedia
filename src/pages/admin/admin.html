@@ -1,0 +1,20 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>Trusted User Submissions</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <form id="form" (ngSubmit)="formSubmitted()">
+        <ion-item>
+          <ion-label>Item or Category:</ion-label>
+          <ion-input required type="text" placeholder="Item or category" [(ngModel)]="itemInfo.item" name="item"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Methods:</ion-label>
+          <ion-input type="text" [(ngModel)]="itemInfo.methods" placeholder="Methods" name="methods"></ion-input>
+        </ion-item>
+        <!-- <button ion-button type="submit" *ngIf()="global.adminState == true" block>Submit</button> -->
+        <button ion-button type="submit" block>Submit</button>
+      </form>
+  </ion-content>
