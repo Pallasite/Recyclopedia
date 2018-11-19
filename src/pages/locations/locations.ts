@@ -7,6 +7,7 @@ import { RestProvider } from '../../providers/rest/rest';
 //import { ItemPage } from '../itemPage/itemPage';
 
 declare var google: any;
+var infoWindow = null;
 
 @Component({
   selector: 'page-locations',
@@ -88,17 +89,12 @@ export class LocationsPage {
         }
         console.log("adding markers to map");
         // for every stored location for a given item, add a marker to the map
-        for(var j = 0; i < this.locations.length; i++) {
-            this.addMarker(this.locations[i].lat, this.locations[i].long, this.locations[i].name);
-        }
-      }
-
-      closeAllInfoWindows() {
-        for(let window of this.infoWindow) {
-          window.close();
+        for(var j = 0; j < this.locations.length; j++) {
+            this.addMarker(this.locations[j].lat, this.locations[j].long, this.locations[j].name);
         }
       }
       /*
+
       addInfoWindowToMarker(marker) {
         var infoWindowContent = '<div id="content"><h1 id="firstHeading" class="firstHeading">' + marker.title + '</h1></div>';
         var infoWindow = new google.maps.InfoWindow({
@@ -113,15 +109,20 @@ export class LocationsPage {
       */
      addInfoWindow(marker, content){
  
-      let infoWindow = new google.maps.InfoWindow({
+      infoWindow = new google.maps.InfoWindow({
         content: content
       });
      
       google.maps.event.addListener(marker, 'click', () => {
+        if (infoWindow) {
+          infoWindow.close();
+      }
         infoWindow.open(this.map, marker);
       });
      
     }
+
+    // clears the markers from the map and then clears the marker array
     clearMarkers(){
       for (var i = 0; i < this.markers.length; i++) {
         console.log(this.markers[i])
@@ -136,12 +137,14 @@ export class LocationsPage {
         map: this.map,
         animation: google.maps.Animation.DROP,
         position: this.map.getCenter(),
+        draggable: true,
         infoClick: function(a) {
           this.startNavigating();
         }
       });
      
-      let content = "<h4>Information!</h4>";         
+      let content = String(this.markers.length+1);
+      this.markers.push(marker);       
       this.addInfoWindow(marker, content);
      
     }
@@ -159,6 +162,16 @@ export class LocationsPage {
       this.addInfoWindow(marker, content);
      
     }
+
+    // future styling of map search feature, will drop pins in sequential order
+    /*
+    function drop() {
+      for (var i =0; i < markerArray.length; i++) {
+        setTimeout(function() {
+          addMarkerMethod();
+        }, i * 200);
+      }
+    }*/
 
     
     startNavigating(){
