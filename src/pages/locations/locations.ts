@@ -8,6 +8,7 @@ import { RestProvider } from '../../providers/rest/rest';
 
 declare var google: any;
 var infoWindow = null;
+var userPosition;
 
 @Component({
   selector: 'page-locations',
@@ -52,10 +53,10 @@ export class LocationsPage {
       
       this.geolocation.getCurrentPosition().then((position) => {
         
-       let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+       userPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
        let mapOptions = {
-         center: latLng,
+         center: userPosition,
          zoom: 15,
          mapTypeId: google.maps.MapTypeId.ROADMAP
        }
@@ -144,7 +145,7 @@ export class LocationsPage {
         position: this.map.getCenter(),
         draggable: true,
         infoClick: function(a) {
-          this.startNavigating();
+          this.startNavigating(marker);
         }
       });
      
@@ -181,7 +182,7 @@ export class LocationsPage {
     }*/
 
     
-    startNavigating(){
+    startNavigating(marker){
  
       let directionsService = new google.maps.DirectionsService;
       let directionsDisplay = new google.maps.DirectionsRenderer;
@@ -189,9 +190,11 @@ export class LocationsPage {
       directionsDisplay.setMap(this.map);
       directionsDisplay.setPanel(this.directionsPanel.nativeElement);
 
+      let dest = new google.maps.LatLng(userPosition.coords.latitude, userPosition.coords.longitude);
+
       directionsService.route({
-          origin: 'adelaide',
-          destination: 'adelaide oval',
+          origin: marker.getPosition(),
+          destination: dest,
           travelMode: google.maps.TravelMode['DRIVING']
       }, (res, status) => {
 
