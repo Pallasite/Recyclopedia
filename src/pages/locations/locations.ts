@@ -51,9 +51,9 @@ export class LocationsPage {
      loadMap(){
       
       this.geolocation.getCurrentPosition().then((position) => {
-    
+        
        let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    
+
        let mapOptions = {
          center: latLng,
          zoom: 15,
@@ -61,7 +61,7 @@ export class LocationsPage {
        }
     
        this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-    
+
       }, (err) => {
           console.log(err);
       });
@@ -73,10 +73,12 @@ export class LocationsPage {
       this.locations = [];
       // search connection with our REST provider
         if (this.searchTerm) {
+          console.log("searchterm: " + this.searchTerm);
           this.restProvider.searchItems(this.searchTerm)
           .then(data => {
             this.locations = data;
-            // console.log("data: " , data);
+            console.log("data: " , data);
+
           });
         
           console.log("items: " , this.locations);
@@ -85,12 +87,14 @@ export class LocationsPage {
 
       public async getLocationInfo(i: any) {
         if (this.locations[i]) {
+          console.log("location: " , this.locations[i]);
           this.locations = this.locations[i].locations;
         }
         console.log("adding markers to map");
         // for every stored location for a given item, add a marker to the map
         for(var j = 0; j < this.locations.length; j++) {
-            this.addMarker(this.locations[j].lat, this.locations[j].long, this.locations[j].name);
+          console.log(this.locations[j]);
+          this.addMarker(this.locations[j].latitude, this.locations[j].longitude, this.locations[j].name);
         }
       }
       /*
@@ -112,6 +116,7 @@ export class LocationsPage {
       infoWindow = new google.maps.InfoWindow({
         content: content
       });
+
      
       google.maps.event.addListener(marker, 'click', () => {
         if (infoWindow) {
@@ -151,9 +156,11 @@ export class LocationsPage {
     
      addMarker(lat, long, name){
       // clears old markers from map
+      console.log("lat long: " + +lat + typeof(long));
       let marker = new google.maps.Marker({
         map: this.map,
         animation: google.maps.Animation.DROP,
+        // this was +lat, +long WHY?
         position: new google.maps.LatLng(lat,long)
       });
      

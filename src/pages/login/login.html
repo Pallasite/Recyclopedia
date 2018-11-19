@@ -2,19 +2,26 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Login</ion-title>
- </ion-navbar>
+  </ion-navbar>
 </ion-header>
 
-<form id="form" (ngSubmit)="logForm()">
-      <ion-item>
-        <ion-label>Username:</ion-label>
-        <ion-input required type="text" placeholder="Username" [(ngModel)]="login.username" name="username"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Password:</ion-label>
-        <ion-input required type="password" placeholder="Password" [(ngModel)]="login.password" name="password"></ion-input>
-      </ion-item>
-      <button ion-button type="submit" block>Log in</button>
-    </form>
-    <button ion-button (click)="registerUser()" type="submit" block>Sign up</button>
-   
+<ion-grid fixed >
+  <ion-row class="centered_row">
+    <!-- <div class="login_field"> -->
+      <ion-col col-md-8 col-lg-6 col-xl-6>
+        <form id="form" (ngSubmit)="logForm()">
+          <ion-item>
+            <ion-label>Username:</ion-label>
+            <ion-input required type="text" placeholder="Username" [(ngModel)]="login.username" name="username"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Password:</ion-label>
+            <ion-input required type="password" placeholder="Password" [(ngModel)]="login.password" name="password"></ion-input>
+          </ion-item>
+          <button ion-button type="submit" block>Log in</button>
+        </form>
+        <button ion-button (click)="registerUser()" type="submit" block>Sign up</button>
+      </ion-col>
+    <!-- </div> -->
+  </ion-row>
+</ion-grid>

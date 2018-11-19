@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar >
     <ion-grid>
-      <ion-row>
+      <ion-row class="centered_row">
         <ion-col></ion-col>
         <ion-col>
           <ion-title>Home</ion-title>
@@ -76,8 +76,75 @@ Nutrition
 </ion-card>
 
 <br>
-<h3>Become an Admin.</h3>
+<h2>Have information we're missing?</h2>
+<h4>Trusted/Admin Users:</h4>
 <p>Recycling Coordinator Form Submission</p>
-<button ion-button (click)="openForm()" block>Open form</button>
+<button ion-button (click)="openAdminForm()" block>Open form</button>
 
-</ion-content>
+    <!-- <ion-row>
+      <ion-col>
+         <h1>News Feed</h1> 
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="centered_row">
+     oof, this is not how the grids are supposed to be used, but it's hacky for now 
+
+      <ion-col col-12 col-lg-10 col-xl-8>
+        <ion-card *ngFor="let card of cards">
+
+          <ion-item>
+            <ion-avatar item-left>
+              <img src= "assets/imgs/logo.png" />
+            </ion-avatar>
+            <h2>A News</h2>
+          </ion-item>
+
+          <img src= "https://www.waste360.com/sites/waste360.com/files/styles/article_featured_retina/public/recycling%20bins%20recyclables%20flying%20above-ts-680657646-1540.jpg?itok=oxrIRJY9" />
+
+          <ion-card-content>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+          </ion-card-content>
+
+          <ion-row>
+            <ion-col>
+              <button ion-button icon-left clear small>
+                <ion-icon name="thumbs-up"></ion-icon>
+                <div>12 Likes</div>
+              </button>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-left clear small>
+                <ion-icon name="text"></ion-icon>
+                <div>4 Comments</div>
+              </button>
+            </ion-col>
+            <ion-col center text-center>
+              <ion-note>
+                11h ago
+              </ion-note>
+            </ion-col>
+          </ion-row>
+
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row class="centered_row">
+
+      <ion-col col-12 col-xl-4>
+        <h3>Become an Admin.</h3>
+        <p>Recycling Coordinator Form Submission</p>
+      </ion-col>
+
+    </ion-row>
+    <ion-row class="centered_row">
+
+      <ion-col col-4 >
+        <button ion-button (click)="openForm()" block>Open form</button>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</ion-content> -->

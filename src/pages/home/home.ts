@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, MenuToggle } from 'ionic-angular';
 import { FormsPage } from '../login/login';
+import { AdminView } from '../admin/admin';
+
 
 @Component({
   selector: 'page-home',
@@ -14,7 +16,6 @@ export class HomePage {
   constructor(
     public navCtrl: NavController,
     public menuToggle: MenuToggle
-    // public viewCtrl: ViewController
 
     ) {
          this.cards = new Array(2);
@@ -22,10 +23,12 @@ export class HomePage {
   public openForm() {
     console.log("forms page");
     this.navCtrl.push(FormsPage);
-  // this.navCtrl.push(FormsPage, obj->adminAuthAuth=true);
   }
   public openSideMenu() {
     this.navCtrl.push(FormsPage);
+  }
+  public openAdminForm() {
+    this.navCtrl.push(AdminView);
   }
 
 }
