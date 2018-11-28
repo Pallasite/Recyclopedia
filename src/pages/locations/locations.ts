@@ -144,9 +144,9 @@ export class LocationsPage {
         animation: google.maps.Animation.DROP,
         position: this.map.getCenter(),
         draggable: true,
-        infoClick: function(a) {
-          this.startNavigating(marker);
-        }
+        //infoClick: function(a) {
+          //this.startNavigating(marker);
+       // }
       });
      
       let content = String(this.markers.length+1);
