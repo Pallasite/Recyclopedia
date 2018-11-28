@@ -7,7 +7,9 @@ from django.dispatch import receiver
 
 class Location(models.Model):
     latitude = models.FloatField()
+    latitude = models.DecimalField(max_digits=8, decimal_places=6)
     longitude = models.FloatField()
+    longitude = models.DecimalField(max_digits=8, decimal_places=6)
     name = models.CharField(max_length=50, blank=True)
 
 

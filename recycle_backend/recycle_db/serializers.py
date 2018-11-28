@@ -5,7 +5,8 @@ from django.contrib.auth.models import User
 class RecyclableSerializer(serializers.ModelSerializer):
     class Meta:
         model = Recyclable
-        fields = ('item', 'methods')
+        fields = ('item', 'methods', 'locations')
+        depth = 1
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

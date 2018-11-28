@@ -41,14 +41,14 @@ export class AdminView {
     var methods = this.itemInfo.methods;
     this.itemInfo = {'item': item, 'methods': methods};
 
-    // if (this.itemInfo) {
-    //     this.restProvider.adminSubmission(this.itemInfo)
-    //       .then(data => {
-    //           var response = data;
-    //             console.log("Response from form submission: " , response);
-    //       });
+    if (this.itemInfo) {
+        this.restProvider.adminSubmission(this.itemInfo)
+          .then(data => {
+              var response = data;
+                console.log("Response from form submission: " , response);
+          });
 
-    // }
+    }
       alert("Form submitted.");
       this.navCtrl.pop();
   }

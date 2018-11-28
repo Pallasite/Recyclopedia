@@ -44,14 +44,13 @@ export class FormsPage {
     if (this.login) {
       this.restProvider.userLogin(this.login)
         .then(data => {
-          var response = data;
+          // var response = data; 
           console.log("data: " , data);
-          this.global.token = this.response.token;
+          this.global.token = data.token;
            console.log("Token updated: " , this.global.token);
-           var user = this.response.user;
+           var user = data.user;
 
            console.log("user: " , user);
-           console.log("response: " , response);
         });
   }
  
