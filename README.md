@@ -8,7 +8,7 @@ Recyclopedia is to be a platform for providing easy access to detailed informati
 
 ## Running Instructions 
 ### Frontend
-To run the Ionic front end, Node.js must be installed. Then, once Node is installed (and assuming npm was installed with it), install the Ionic framework and install Cordova:
+To run the Ionic front end, Node.js must be installed. Install the LTS version, available at https://nodejs.org/en/. Then, once Node is installed (and assuming npm was installed with it), install the Ionic framework and install Cordova:
 
 ```
 npm install -g ionic
