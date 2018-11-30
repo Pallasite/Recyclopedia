@@ -28,4 +28,12 @@ npm i @ionic/app-scripts
 ```
 
 ### Backend
-Coming soon...
+-Set up and activate a python virtual environment using python 3.5
+https://www.pythonforbeginners.com/basics/how-to-use-python-virtualenv/
+-From command line cd into Recyclopedia/recycle_backend/
+Run:
+-$ pip install requirements.txt
+-$ python manage.py runserver
+
+**Note: Both frontend and backend services should be run on the same computer**
+
