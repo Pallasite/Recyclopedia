@@ -8,24 +8,24 @@
     </ion-header>
 
     <ion-content>
-      <ion-list>
-        <button ion-item icon-start>
+      <ion-list id="sidebar-list">
+        <button (click)="openPage('SearchPage')" ion-item icon-start>
           <ion-icon name="search"></ion-icon>
           Search
         </button>
-        <button ion-item icon-start>
+        <button (click)="openPage('LocationsPage')" ion-item icon-start>
           <ion-icon name="md-navigate"></ion-icon>
           Location
         </button>
-        <button ion-item icon-start>
+        <button (click)="openPage('HomePage')" ion-item icon-start>
           <ion-icon name="home"></ion-icon>
           Home
         </button>
-        <button ion-item icon-start>
+        <button (click)="openPage('UserProfile')" ion-item icon-start>
           <ion-icon name="person"></ion-icon>
           Profile
         </button>
-        <button ion-item icon-start>
+        <button (click)="openPage('Favorites')" ion-item icon-start>
           <ion-icon name="heart"></ion-icon>
           Favorites
         </button>

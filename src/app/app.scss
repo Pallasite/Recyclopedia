@@ -14,3 +14,10 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+// a style needs to be added to make sure the icons aren't getting cut off
+// but i'm guessing that won't work on the list, but would probably work 
+// restyling the inner properties
+#sidebar-list {
+
+}
