@@ -28,9 +28,8 @@ $ npm i @ionic/app-scripts
 ```
 
 ### Backend
--Set up and activate a python virtual environment using python 3.5
-https://www.pythonforbeginners.com/basics/how-to-use-python-virtualenv/
--From command line cd into Recyclopedia/recycle_backend/
+* Set up and activate a Python virtual environment using Python 3.5: https://www.pythonforbeginners.com/basics/how-to-use-python-virtualenv/
+* From command line cd into Recyclopedia/recycle_backend/
 Run:
 ```
 $ pip install requirements.txt
