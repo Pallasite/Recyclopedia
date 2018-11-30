@@ -10,6 +10,8 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
 from recycle_db.permissions import IsTrustedOrReadOnly
 
 class UserDetail(generics.RetrieveUpdateAPIView):
+    queryset = User.objects.all()
+    serializer = UserSerializer
     def get(request, username):
         user = UserProfile.objects.all(
                         username=username).select_related('profile')
@@ -18,7 +20,14 @@ class UserDetail(generics.RetrieveUpdateAPIView):
             serializer = UserSerializer
             return response(serializer.data)
         return Response(status=status.HTTP_204_NO_CONTENT)
-    """   
+
+
+class UserProfileDetail(generics.RetrieveAPIView):
+    queryset = UserProfile.objects.all()
+    serializer = UserProfileSerializer
+    permission_classes = (AllowAny,) 
+
+"""   
     def post(request):
         serializer = UserProfileSerializer(data=request.data)
         if serializer.is_valid(raise_exception=ValueError):
@@ -67,6 +76,7 @@ def recyclable_search(request, search):
                 break
     if len(filtered_search) == 0:
         return Response(status=status.HTTP_204_NO_CONTENT) 
+    
     serializer = RecyclableSerializer(filtered_search, many=True)
     return Response(serializer.data)
 

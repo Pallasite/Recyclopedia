@@ -8,6 +8,12 @@ import { RestProvider } from '../../providers/rest/rest';
 
 declare var google: any;
 var infoWindow = null;
+var userPosition;
+
+var navLatLng;
+var navLng;
+var navLat;
+var marker;
 
 @Component({
   selector: 'page-locations',
@@ -52,10 +58,10 @@ export class LocationsPage {
       
       this.geolocation.getCurrentPosition().then((position) => {
         
-       let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+       userPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
        let mapOptions = {
-         center: latLng,
+         center: userPosition,
          zoom: 15,
          mapTypeId: google.maps.MapTypeId.ROADMAP
        }
@@ -123,6 +129,7 @@ export class LocationsPage {
           infoWindow.close();
       }
         infoWindow.open(this.map, marker);
+        //this.startNavigating(marker);
       });
      
     }
@@ -143,14 +150,16 @@ export class LocationsPage {
         animation: google.maps.Animation.DROP,
         position: this.map.getCenter(),
         draggable: true,
-        infoClick: function(a) {
-          this.startNavigating();
-        }
+        //infoClick: function(a) {
+        //  this.startNavigating(marker);
+        //}
+        
       });
-     
       let content = String(this.markers.length+1);
       this.markers.push(marker);       
       this.addInfoWindow(marker, content);
+      // testing
+      this.startNavigating(marker);
      
     }
     
@@ -164,8 +173,9 @@ export class LocationsPage {
         position: new google.maps.LatLng(lat,long)
       });
      
-      let content = name;         
-     
+      let content = name;
+      // ADDED in case things break         
+      this.markers.push(marker); 
       this.addInfoWindow(marker, content);
      
     }
@@ -181,7 +191,7 @@ export class LocationsPage {
     }*/
 
     
-    startNavigating(){
+    startNavigating(navMarker){
  
       let directionsService = new google.maps.DirectionsService;
       let directionsDisplay = new google.maps.DirectionsRenderer;
@@ -189,9 +199,29 @@ export class LocationsPage {
       directionsDisplay.setMap(this.map);
       directionsDisplay.setPanel(this.directionsPanel.nativeElement);
 
+
+      /*
+      this.geolocation.getCurrentPosition().then((position) => {
+        userPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        navLat = position.coords.latitude;
+        navLng = position.coords.longitude;
+       }, (err) => {
+           console.log(err);
+       });
+       */
+
+
+      navLatLng = navMarker.getPosition();
+      navLat = navLatLng.lat();
+      navLng = navLatLng.lng();
+
+
       directionsService.route({
-          origin: 'adelaide',
-          destination: 'adelaide oval',
+          //origin: chosenMarker.getPosition(),
+          //origin: orig,
+          //destination: dest,
+          origin: {lat: navLat, lng: navLng},
+          destination: {lat: 43.0730904, lng: -89.4129883},
           travelMode: google.maps.TravelMode['DRIVING']
       }, (res, status) => {
 

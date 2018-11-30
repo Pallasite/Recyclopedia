@@ -30,7 +30,6 @@ export class FormsPage {
       "username": String
     }
   }
-  
   login = {
     username: '',
     password: ''
@@ -44,14 +43,13 @@ export class FormsPage {
     if (this.login) {
       this.restProvider.userLogin(this.login)
         .then(data => {
-          var response = data;
+          var response = data; 
           console.log("data: " , data);
-          this.global.token = this.response.token;
+          this.global.token = response['token'];
            console.log("Token updated: " , this.global.token);
-           var user = this.response.user;
+           var user = response['user'];
 
            console.log("user: " , user);
-           console.log("response: " , response);
         });
   }
  

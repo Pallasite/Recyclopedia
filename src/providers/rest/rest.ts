@@ -11,7 +11,7 @@ import { GlobalService } from '../../pages/global/global.service';
 */
 @Injectable()
 export class RestProvider {
-  apiUrl = 'http://192.168.1.2:8000';
+  apiUrl = 'http://0.0.0.0:8000';
   constructor(
     public http: HttpClient,
     public global: GlobalService,
