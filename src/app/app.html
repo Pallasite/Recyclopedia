@@ -1,41 +1,40 @@
 <ion-split-pane when="lg">
 
   <ion-menu [content]="content">
-    <ion-header padding>
-      <ion-navbar>
-        <ion-title>Menu</ion-title>
-      </ion-navbar>
-    </ion-header>
-
-    <ion-content>
-      <ion-list>
-        <button ion-item icon-start>
-          <ion-icon name="search"></ion-icon>
-          Search
-        </button>
-        <button ion-item icon-start>
-          <ion-icon name="md-navigate"></ion-icon>
-          Location
-        </button>
-        <button ion-item icon-start>
-          <ion-icon name="home"></ion-icon>
-          Home
-        </button>
-        <button ion-item icon-start>
-          <ion-icon name="person"></ion-icon>
-          Profile
-        </button>
-        <button ion-item icon-start>
-          <ion-icon name="heart"></ion-icon>
-          Favorites
-        </button>
-      </ion-list>
-
-      <p> These buttons are not linked to the navigation controller, so clicking them will not do anything. Not a bug, working as intended </p>
-    </ion-content>
+  <ion-header padding>
+  <ion-navbar>
+  <ion-title>Menu</ion-title>
+  </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+  <ion-list id="sidebar-list">
+  <button (click)="openPage('SearchPage')" ion-item icon-start>
+  <ion-icon name="search"></ion-icon>
+  Search
+  </button>
+  <button (click)="openPage('LocationsPage')" ion-item icon-start>
+  <ion-icon name="md-navigate"></ion-icon>
+  Location
+  </button>
+  <button (click)="openPage('HomePage')" ion-item icon-start>
+  <ion-icon name="home"></ion-icon>
+  Home
+  </button>
+  <button (click)="openPage('UserProfile')" ion-item icon-start>
+  <ion-icon name="person"></ion-icon>
+  Profile
+  </button>
+  <button (click)="openPage('Favorites')" ion-item icon-start>
+  <ion-icon name="heart"></ion-icon>
+  Favorites
+  </button>
+  </ion-list>
+  
+  </ion-content>
   </ion-menu>
-
+  
   <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
-  <ion-nav [root]="rootPage" #content main swipeBackEnabled="false"></ion-nav>
-
-</ion-split-pane>
+  <ion-nav [root]="rootPage" #content main></ion-nav>
+  
+  </ion-split-pane>
